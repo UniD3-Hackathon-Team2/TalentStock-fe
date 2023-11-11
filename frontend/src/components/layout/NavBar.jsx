@@ -57,9 +57,9 @@ export default function NavBar() {
         }}
       >
         <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
-          <img src={"img/logo.jpg"} width={170} />
+          <img src={"img/logo.jpg"} width={300} />
         </Link>
-        <NavLink link={`/offer/${userType}/`} name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
+        <NavLink link={`/offer/${userId}/`} name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
           style={{
             padding: "1rem 2rem",
@@ -90,7 +90,7 @@ export default function NavBar() {
           className="whiteContainer"
         >
           <div>
-            안녕하세요, <b>OOO님</b>
+            안녕하세요, <b>사용자님</b>
           </div>
           <hr
             color="var(--purple5)"

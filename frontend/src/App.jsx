@@ -12,7 +12,6 @@ import Layout from "./components/layout/Layout";
 import Main from "./pages/Main/Main";
 import ProfileStudent from "./pages/Profile/ProfileStudent";
 import ProfileCompany from "./pages/Profile/ProfileCompany";
-
 export const context = createContext({});
 
 function App() {

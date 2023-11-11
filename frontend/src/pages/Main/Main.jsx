@@ -3,18 +3,21 @@ import { useForm } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import "./Main.css";
 
 import { context } from "../../App";
 
 import Layout from "../../components/layout/Layout";
+import MainUser from "./MainUser";
 
-const BASEURL = "http://43.202.86.217/api/v1/member";
+const BASEURL = "http://43.202.86.217/api/v1";
 
 function Main() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     RecommendedStudents(
@@ -44,7 +47,7 @@ function Main() {
   ) => {
     try {
       const res = await axios({
-        url: "/search",
+        url: "/member/search",
         method: "post",
         baseURL: BASEURL,
         data: {
@@ -142,24 +145,10 @@ function Main() {
           <SearchIcon />
         </button>
       </form>
-      {recommendedStudents.map((recommendedStudent) => {
-        return (
-          <div className="recommendedStudentsDiv">
-            <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-            <div className="infoDiv">
-              <div className="firstLine">
-                <span className="name">{recommendedStudent.name}</span>
-                <button className="suggestions">제안하기</button>
-              </div>
 
-              <div class="line"></div>
-              <span className="info sub">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
-              <span className="info">{recommendedStudent.shortIntroduce}</span>
-              <div className="interests">{recommendedStudent.interest}</div>
-            </div>
-          </div>
-        );
-      })}
+      {recommendedStudents.map((recommendedStudent) => (
+        <MainUser recommendedStudent={recommendedStudent} />
+      ))}
     </Layout>
   );
 }

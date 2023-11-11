@@ -1,22 +1,65 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import Box from "@mui/material/Box";
-import { offers } from "./offers";
+// import { offers } from "./offers";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 
 
 import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
 import { context } from "../../App";
 
+const BASEURL = "http://43.202.86.217/api/v1/offer?";
+
+
 function OfferStudent() {
   const {userType, setUserType} = useContext(context);
   const {userId, SetUserId} = useContext(context);
+  const [offerType, SetOfferType] = useState("JOB");
+  const [offers, setOffers] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("fetching data")
+        const response = await axios.get(BASEURL, {
+          headers: {
+            authorization: "3" // 여기에 헤더 값 설정
+          },
+          params: {
+            offerType: "JOB" // 여기에 URL 쿼리 매개변수 설정
+          }
+        });
+        // console.log(offerType)
+        // console.log(response.data.isSuccess);
+        if (response.data.isSuccess) {
+          // console.log("yes")
+          console.log(response.data.result.companyOfferDtoList)
+          // t = response.data.result.companyOfferDtoList
+          // console.log(t)
+          setOffers(response.data.result.companyOfferDtoList)
+          // console.log(t);
+          // setOffers(t => {
+          //   console.log(t)
+          //   return t
+          // })
+          // console.log(offers);
+        }
+        // 응답 데이터 처리
+      } catch (error) {
+        // 에러 처리
+        console.log(error)
+      }
+    };
+
+    fetchData();
+  }, []);
 
 
   const handleCompany = (data) => {
@@ -76,7 +119,7 @@ function OfferStudent() {
                           marginLeft: 70,
                         }}
                       >
-                        {row.success}
+                        {row.granted ? '수락 완료' : '수락대기중'}
                       </Typography>
                       <Box
                         sx={{
@@ -97,7 +140,7 @@ function OfferStudent() {
                               display: "inline-block",
                             }}
                           >
-                            {row.name}
+                            {row.companyName}
                           </Typography>
                           <Typography
                             style={{
@@ -124,7 +167,7 @@ function OfferStudent() {
                               장학금 금액
                             </Typography>
                           }
-                          secondary={row.amount}
+                          secondary={row.scholarship}
                         />
                         <ListItemText
                           primary={

@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/Layout";
-import * as React from "react";
+import React, { useEffect } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Accordion } from "../../components/Accordion";
 import {
@@ -11,8 +11,31 @@ import {
   left,
   right,
 } from "../../components/Profile/Layout";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+
+const BASEURL = "http://43.202.86.217/api/v1";
 
 export default function ProfileStudent() {
+  const parame = useParams();
+  const id = parame.id;
+
+  const GetUseInfo = async () => {
+    try {
+      const res = await axios({
+        url: `/member/${id}`,
+        method: "get",
+        baseURL: BASEURL,
+      });
+
+      if (true) setStudentInfo(res);
+    } catch (error) {
+      console.log("can't use user info system", error);
+    }
+  };
+
+  useEffect(() => {}, []);
+
   const [studentinfo, setStudentInfo] = React.useState({
     name: "김OO",
     email: "email@email.com",
