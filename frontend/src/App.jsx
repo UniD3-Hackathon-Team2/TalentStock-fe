@@ -34,7 +34,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
           <Route
-            path="/offer"
+            path="/offer/:id"
             element={
               userType === "student" ? <OfferStudent /> : <OfferCompany />
             }

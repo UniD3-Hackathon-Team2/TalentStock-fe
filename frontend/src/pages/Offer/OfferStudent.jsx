@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -12,13 +12,17 @@ import Typography from "@mui/material/Typography";
 
 import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
+import { context } from "../../App";
 
 function OfferStudent() {
-  const [data, setData] = useState(offers);
-  const {userType, SetUserType} = useContext(context);
+  const {userType, setUserType} = useContext(context);
+  const {userId, SetUserId} = useContext(context);
+
 
   const handleCompany = (data) => {
-    print(data.id);
+    // console.log(userId)
+    // console.log(data.userId)
+    // console.log(data.id);
     // SetUserType("company")
     // Navigate(`/profile/${data.id}`)
   }
