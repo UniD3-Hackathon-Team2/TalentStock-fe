@@ -1,5 +1,5 @@
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 
 import { context } from "../../App";
 import { useNavigate } from "react-router-dom";
@@ -16,11 +16,12 @@ function MainUser({ recommendedStudent }) {
 
   return (
     <div
-      key={recommendedStudent.id}
+      key={recommendedStudent.memberId}
       className="recommendedStudentsDiv"
       onClick={(event) => {
         if (event.target.className === "suggestions") return;
-        navigate(`/profile/${recommendedStudent.id}`);
+        console.log(recommendedStudent.memberId);
+        navigate(`/profile/${recommendedStudent.memberId}`);
       }}
     >
       <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />

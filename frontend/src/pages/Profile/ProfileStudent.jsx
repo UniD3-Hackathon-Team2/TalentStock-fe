@@ -28,13 +28,17 @@ export default function ProfileStudent() {
         baseURL: BASEURL,
       });
 
-      if (true) setStudentInfo(res);
+      console.log(res.data.result);
+
+      if (res.status === 200) setStudentInfo(res.data.result);
     } catch (error) {
       console.log("can't use user info system", error);
     }
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    GetUseInfo();
+  }, []);
 
   const [studentinfo, setStudentInfo] = React.useState({
     name: "김OO",
@@ -44,9 +48,8 @@ export default function ProfileStudent() {
     grade: 3,
     majorScore: 3.7,
     totalScore: 3.9,
-    gpaTotal: 4.5,
     introduce: "저는 누구누구입니다",
-    interestedFields: [
+    interestTagList: [
       "관심1",
       "ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ",
       "ㅁㅁㅁ",
@@ -187,7 +190,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.interestedFields.map((field, index) => (
+              {studentinfo.interestTagList.map((field, index) => (
                 <GridElementWrapper
                   key={index}
                   style={{
@@ -247,7 +250,6 @@ export default function ProfileStudent() {
                                 }}
                               >
                                 {studentinfo.totalScore} /{" "}
-                                {studentinfo.gpaTotal}
                               </div>
                             )}
                           </div>
