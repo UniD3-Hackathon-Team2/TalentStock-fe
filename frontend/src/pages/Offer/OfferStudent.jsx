@@ -34,7 +34,7 @@ function OfferStudent() {
                 <ul>
                   <ListSubheader>{`${row.name}`}</ListSubheader>
                   <ListItem key={`item-${row.amount}-${row.position}`}>
-                    <Box
+                    <Box style={{flex: 1}}
                       sx={{
                         display: "flex",
                         justifyContent: "space-between",
@@ -49,7 +49,7 @@ function OfferStudent() {
                         className="success"
                         primary={`${row.success}`}
                       />
-                      <Box
+                      <Box style={{flex: 3}}
                         sx={{
                           display: "flex",
                           flexDirection: "column",
@@ -64,14 +64,13 @@ function OfferStudent() {
                         >
                           {row.name}
                         </Typography>
-                        <ListItemText primary={`에서 오퍼를 보냈습니다`} />
                         <ListItemText primary={`장학금 금액 ${row.amount}`} />
                         <ListItemText primary={`포지션 ${row.position}`} />
                       </Box>
-                      <Box>
+                      <Box style={{flex: 2}}>
                         <Button
                           variant="outlined"
-                          style={{ color: "#6A58D1", borderColor: "#6A58D1" }}
+                          style={{ color: "#6A58D1", borderColor: "#6A58D1" ,}}
                         >
                           수락하기
                         </Button>
