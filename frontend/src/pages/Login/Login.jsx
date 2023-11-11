@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import "./Login.css";
 
+import { context } from "../../App";
+
 const BASEURL = "";
 
 function Login() {
+  const { userState, SetUserState } = useContext(context);
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {};
   const PostLogIn = async (id, password) => {
