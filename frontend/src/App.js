@@ -9,14 +9,14 @@ import Layout from "./components/layout/Layout";
 
 function App() {
   return (
-    <Layout>
-      <Router>
+    <Router>
+      <Layout>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
         </Routes>
-      </Router>
-    </Layout>
+      </Layout>
+    </Router>
   );
 }
 
