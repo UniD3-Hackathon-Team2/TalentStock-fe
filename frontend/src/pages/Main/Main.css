@@ -21,7 +21,7 @@
 }
 
 .searchForm .leftSelect {
-  margin-left: 17%;
+  margin-left: 10%;
 }
 
 .searchForm .submitInput {
@@ -67,13 +67,90 @@
 
 .recommendedStudentsDiv .infoDiv {
   margin-right: 70px;
-  height: 100%;
+  height: 80%;
   width: 80%;
-
-  background-color: red;
 
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
+}
+
+.infoDiv .firstLine {
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoDiv .suggestions {
+  width: 100px;
+  height: 30px;
+
+  border-radius: 10px;
+  border: 0px;
+
+  color: white;
+  font-family: Inter;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: black;
+}
+
+.recommendedStudentsDiv .name {
+  width: 100%;
+
+  color: var(--gray6, #333);
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.recommendedStudentsDiv .line {
+  height: 3px;
+  width: 100%;
+
+  background-color: black;
+}
+
+.recommendedStudentsDiv .info {
+  color: var(--gray6, #333);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+}
+
+.recommendedStudentsDiv .interests {
+  width: 80px;
+  height: 30px;
+
+  margin-bottom: 10px;
+  border-radius: 10px;
+
+  color: white;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(251deg, #8a6ae3 7.73%, #3338b3 100%);
 }

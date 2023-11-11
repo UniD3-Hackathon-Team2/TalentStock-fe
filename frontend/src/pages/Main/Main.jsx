@@ -25,6 +25,7 @@ function Main() {
       department: "test",
       grade: 1,
       short_introduce: "test",
+      interests: "test",
     },
   ]);
 
@@ -114,7 +115,7 @@ function Main() {
             );
           })}
         </select>
-        <select {...register("department")}>
+        <select {...register("grade")}>
           <option value={null}>학년 선택</option>
           <option value={"1학년"}>1학년</option>
           <option value={"2학년"}>2학년</option>
@@ -128,12 +129,16 @@ function Main() {
       <div className="recommendedStudentsDiv">
         <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
         <div className="infoDiv">
-          <span className="name">{recommendedStudents[0].name}</span>
+          <div className="firstLine">
+            <span className="name">{recommendedStudents[0].name}</span>
+            <button className="suggestions">제안하기</button>
+          </div>
+
+          <div class="line"></div>
+          <span className="info">{`${recommendedStudents[0].university} ${recommendedStudents[0].department} ${recommendedStudents[0].grade}학년`}</span>
+          <span className="info">{recommendedStudents[0].short_introduce}</span>
+          <div className="interests">{recommendedStudents[0].interests}</div>
         </div>
-      </div>
-      <div className="recommendedStudentsDiv">
-        <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-        <div></div>
       </div>
     </Layout>
   );
