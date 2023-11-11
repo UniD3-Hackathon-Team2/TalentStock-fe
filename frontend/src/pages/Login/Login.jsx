@@ -8,23 +8,23 @@ import { context } from "../../App";
 
 const BASEURL = "http://43.202.86.217/api/v1/member";
 
-function Login() {
+function NewLogin() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    PostLogIn(data.id, data.password);
+    PostLogIn(data.email, data.password);
   };
-  const PostLogIn = async (id, password) => {
+  const PostLogIn = async (email, password) => {
     try {
       const res = await axios({
         url: "/login",
         method: "post",
         baseURL: BASEURL,
         data: {
-          id: id,
+          id: email,
           pw: password,
         },
       });
@@ -44,9 +44,8 @@ function Login() {
       <div className="loginbackground">
         <div className="loginoutFormDiv">
           <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/main">
-              <img src={"img/logo.jpg"} width={450} />
-            </Link>
+            <img src={"img/logo.jpg"} width={450} />
+
             <span className="mainLabel">로그인</span>
             <span className="label">이메일</span>
             <input className="idInput" type="text" {...register("id")} />
@@ -67,4 +66,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default NewLogin;
