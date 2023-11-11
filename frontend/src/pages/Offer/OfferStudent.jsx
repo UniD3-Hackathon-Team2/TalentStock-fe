@@ -24,7 +24,7 @@ function OfferStudent() {
             sx={{
               position: "relative",
               overflow: "auto",
-              maxHeight: 500,
+              maxHeight: 480,
               "& ul": { padding: 0 },
             }}
             subheader={<li />}
