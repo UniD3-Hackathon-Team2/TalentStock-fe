@@ -57,9 +57,9 @@ export default function NavBar() {
         }}
       >
         <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
-          <img src={"img/logo.jpg"} width={170} />
+          <img src={"img/logo.jpg"} width={300} />
         </Link>
-        <NavLink link={`/offer/${userType}/`} name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
+        <NavLink link={`/offer/${userId}/`} name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
           style={{
             padding: "1rem 2rem",
