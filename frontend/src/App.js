@@ -1,15 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 function App() {
-  return (
-      <Router>
-        <Routes>
-          <Route
-          />
-        </Routes>
-      </Router>
-  );
+  return <div></div>;
 }
 
 export default App;
