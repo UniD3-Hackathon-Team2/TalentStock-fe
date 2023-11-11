@@ -50,8 +50,8 @@ export default function NavBar() {
           color: "var(--purple4)",
         }}
       >
-        <Link to="/main" style={{padding: "0.7rem 1.5rem"}}>
-          <img src={"img/logo.jpg"} width={120} />
+        <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
+          <img src={"img/logo.jpg"} width={170} />
         </Link>
         <NavLink link="/" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
