@@ -30,7 +30,7 @@ function Login() {
       });
       console.log(res.data.result.memberId);
       if (res.data.isSuccess) {
-        setUserType(res.data.result.memberType);
+        setUserType(res.data.result.memberType.toLowerCase());
         SetUserId(res.data.result.memberId);
         navigate("/main");
       }
