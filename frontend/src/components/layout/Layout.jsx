@@ -17,6 +17,7 @@ export default function Layout({ children, style }) {
           style={{
             padding: "10rem 8rem",
             maxWidth: "1200px",
+            minWidth: "1200px",
             display: "flex",
             flexDirection: "column",
             ...style,

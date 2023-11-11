@@ -3,7 +3,8 @@ import Grid from "@mui/material/Grid";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 import Button from "@mui/material/Button";
-import React from "react";
+import React, { useState } from "react";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 export const WhiteContainer = styled("div")({
   backgroundColor: "var(--white)",
@@ -14,57 +15,119 @@ export const WhiteContainer = styled("div")({
   width: "100%",
 });
 
-export const WhiteContainerOverlay = ({ children, setIsOpen }) => {
+export const WhiteContainerEdit = ({ children, overlayChildren }) => {
+  const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
   return (
     <React.Fragment>
+      {isOverlayOpen && (
+        <WhiteContainerOverlay setIsOverlayOpen={setIsOverlayOpen}>
+          {overlayChildren}
+        </WhiteContainerOverlay>
+      )}
       <WhiteContainer>
         <div
           style={{
-            width: "100%",
             boxSizing: "border-box",
             display: "flex",
             justifyContent: "flex-end",
-            marginBottom: "-2rem",
+            marginBottom: "-2.2rem",
+            cursor: "pointer",
+            zIndex: "100",
           }}
         >
-          <CloseRoundedIcon
+          <EditRoundedIcon
             style={{
               marginTop: "0.5rem",
               marginLeft: "auto",
-              cursor: "pointer",
             }}
             onClick={() => {
-              setIsOpen(false);
+              setIsOverlayOpen(true);
             }}
           />
         </div>
         {children}
-        <div
-          style={{
-            bottom: "0",
-            width: "100%",
-            boxSizing: "border-box",
-            display: "flex",
-            justifyContent: "flex-end",
-            background: "red",
-          }}
-        >
-          <Button
-            variant="contained"
-            style={{
-              marginLeft: "auto",
-              padding: "0.5rem 1rem",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setIsOpen(false);
-            }}
-          >
-            재출
-          </Button>
-        </div>
       </WhiteContainer>
     </React.Fragment>
+  );
+};
+export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
+  return (
+    <div
+      style={{
+        position: "fixed",
+        top: "0",
+        left: "0",
+        zIndex: "1000000",
+        backgroundColor: "rgba(151, 155, 252, 0.70)",
+        width: "100vw",
+        height: "100vh",
+        overflow: "scroll",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          width: "100%",
+          boxSizing: "border-box",
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "-8rem",
+        }}
+      >
+        <CloseRoundedIcon
+          style={{
+            margin: "4rem",
+            marginLeft: "auto",
+            cursor: "pointer",
+            fontSize: "2.5rem",
+          }}
+          onClick={() => {
+            setIsOverlayOpen(false);
+          }}
+        />
+      </div>
+      <div
+        style={{
+          padding: "4rem 8rem",
+          maxWidth: "1200px",
+          minWidth: "1200px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <WhiteContainer>
+          {children}
+          <div
+            style={{
+              bottom: "0",
+              width: "100%",
+              boxSizing: "border-box",
+              display: "flex",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button
+              variant="contained"
+              style={{
+                marginLeft: "auto",
+                padding: "0.7rem 3rem",
+                cursor: "pointer",
+                borderRadius: "3rem",
+                backgroundColor: "var(--purple4)",
+              }}
+              onClick={() => {
+                // setIsOpen(false);
+              }}
+            >
+              재출
+            </Button>
+          </div>
+        </WhiteContainer>
+      </div>
+    </div>
   );
 };
 

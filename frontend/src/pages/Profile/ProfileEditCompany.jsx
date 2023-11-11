@@ -15,6 +15,7 @@ import TextField from "@mui/material/TextField";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Checkbox from "@mui/material/Checkbox";
+import EditRoundedIcon from "@mui/icons-material/EditRounded";
 
 export default function ProfileEditCompany() {
   const [companyInfo, setCompanyInfo] = useState({
@@ -30,13 +31,19 @@ export default function ProfileEditCompany() {
       "ㅁㅁㅁㅁㅁ",
       "ㅁㅁㅁㅁ",
     ],
-    openJob: {
-      jobTitle: "프런트앤드 개발자",
-      jobDescription: "프런트앤드 개발자, 이걸 합니다",
-      vaca: true,
-      workYears: 100000,
-    },
+    jobTitle: "프런트앤드 개발자",
+    jobDescription: "프런트앤드 개발자, 이걸 합니다",
+    vaca: true,
+    workYears: 100000,
   });
+
+  const handleChange = ({ key, value }) => {
+    console.log(key, value);
+    setCompanyInfo((prevCompanyInfo) => {
+      const updatedCompanyInfo = { ...prevCompanyInfo, [key]: value };
+      return updatedCompanyInfo;
+    });
+  };
   return (
     <Layout style={{ rowGap: "2rem" }}>
       <WhiteContainerOverlay>
@@ -77,7 +84,9 @@ export default function ProfileEditCompany() {
               id="outlined"
               variant="outlined"
               value={companyInfo.name}
-              onChange={() => setCompanyInfo}
+              onChange={(e) =>
+                handleChange({ key: "name", value: e.target.value })
+              }
             />
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
@@ -88,7 +97,9 @@ export default function ProfileEditCompany() {
               id="outlined"
               variant="outlined"
               value={companyInfo.introduce}
-              onChange={() => setCompanyInfo}
+              onChange={(e) =>
+                handleChange({ key: "introduce", value: e.target.value })
+              }
             />
           </GridElementWrapper>
         </GridWrapper>
@@ -160,8 +171,10 @@ export default function ProfileEditCompany() {
             <TextField
               id="outlined"
               variant="outlined"
-              value={companyInfo.openJob.jobTitle}
-              onChange={() => setCompanyInfo}
+              value={companyInfo.jobTitle}
+              onChange={(e) =>
+                handleChange({ key: "jobTitle", value: e.target.value })
+              }
             />
           </GridElementWrapper>
 
@@ -172,8 +185,13 @@ export default function ProfileEditCompany() {
             <TextField
               id="outlined"
               variant="outlined"
-              value={companyInfo.openJob.jobDescription}
-              onChange={() => setCompanyInfo}
+              value={companyInfo.jobDescription}
+              onChange={(e) =>
+                handleChange({
+                  key: "jobDescription",
+                  value: e.target.value,
+                })
+              }
             />
           </GridElementWrapper>
 
@@ -184,8 +202,13 @@ export default function ProfileEditCompany() {
             <TextField
               id="outlined"
               variant="outlined"
-              value={companyInfo.openJob.workYears}
-              onChange={() => setCompanyInfo}
+              value={companyInfo.workYears}
+              onChange={(e) =>
+                handleChange({
+                  key: "workYears",
+                  value: e.target.value,
+                })
+              }
             />
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
@@ -197,8 +220,13 @@ export default function ProfileEditCompany() {
             <Checkbox
               id="outlined"
               variant="outlined"
-              checked={companyInfo.openJob.vaca}
-              onChange={() => setCompanyInfo}
+              checked={companyInfo.vaca}
+              onChange={(e) =>
+                handleChange({
+                  key: "vaca",
+                  value: !companyInfo.vaca,
+                })
+              }
             />
           </GridElementWrapper>
           <GridElementWrapper item xs>

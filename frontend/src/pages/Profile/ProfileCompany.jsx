@@ -8,11 +8,15 @@ import {
   GridElementWrapperRight,
   GridWrapper,
   WhiteContainer,
+  WhiteContainerEdit,
   full,
   left,
   right,
 } from "../../components/Profile/Layout";
-import { Accordion2 } from "../../components/Accordion";
+import {
+  EditCompanyOne,
+  EditCompanyTwo,
+} from "../../components/Profile/EditCompany";
 
 function ProfileCompany() {
   const [companyInfo, setCompanyInfo] = useState({
@@ -28,20 +32,33 @@ function ProfileCompany() {
       "ㅁㅁㅁㅁㅁ",
       "ㅁㅁㅁㅁ",
     ],
-    openJob: {
-      jobTitle: "프런트앤드 개발자",
-      jobDescription: "프런트앤드 개발자, 이걸 합니다",
-      vaca: true,
-      workYears: 100000,
-    },
+    jobTitle: "프런트앤드 개발자",
+    jobDescription: "프런트앤드 개발자, 이걸 합니다",
+    vaca: true,
+    workYears: 100000,
   });
 
   const params = useParams();
   console.log(params);
 
+  const handleChange = ({ key, value }) => {
+    console.log(key, value);
+    setCompanyInfo((prevCompanyInfo) => {
+      const updatedCompanyInfo = { ...prevCompanyInfo, [key]: value };
+      return updatedCompanyInfo;
+    });
+  };
+
   return (
     <Layout style={{ rowGap: "2rem" }}>
-      <WhiteContainer>
+      <WhiteContainerEdit
+        overlayChildren={
+          <EditCompanyOne
+            companyInfo={companyInfo}
+            handleChange={handleChange}
+          />
+        }
+      >
         <GridWrapper container>
           <GridElementWrapper item xs={left}>
             <div
@@ -102,12 +119,19 @@ function ProfileCompany() {
             </GridWrapper>
           </GridElementWrapper>
         </GridWrapper>
-      </WhiteContainer>
-      <WhiteContainer>
+      </WhiteContainerEdit>
+      <WhiteContainerEdit
+        overlayChildren={
+          <EditCompanyTwo
+            companyInfo={companyInfo}
+            handleChange={handleChange}
+          />
+        }
+      >
         <GridWrapper container>
           <GridElementWrapper item xs={full}>
             <h3>
-              공고: <b>{companyInfo.openJob.jobTitle}</b>
+              공고: <b>{companyInfo.jobTitle}</b>
             </h3>
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
@@ -130,14 +154,14 @@ function ProfileCompany() {
                   rowGap: "1rem",
                 }}
               >
-                <div>{companyInfo.openJob.jobDescription}</div>
-                <div>{companyInfo.openJob.workYears}년</div>
-                <div>{companyInfo.openJob.vaca ? "예" : "아니요"}</div>
+                <div>{companyInfo.jobDescription}</div>
+                <div>{companyInfo.workYears}년</div>
+                <div>{companyInfo.vaca ? "예" : "아니요"}</div>
               </div>
             </div>
           </GridElementWrapper>
         </GridWrapper>
-      </WhiteContainer>
+      </WhiteContainerEdit>
     </Layout>
   );
 }
