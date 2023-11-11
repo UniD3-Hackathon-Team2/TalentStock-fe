@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --white: #fff;
+  --purple4: #6139d0;
+}
+
+.whiteContainer {
+  background-color: var(--white);
+  border-radius: 0.8rem;
+}

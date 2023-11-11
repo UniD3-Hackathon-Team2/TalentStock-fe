@@ -9,6 +9,7 @@ export default function Layout({ children }) {
       }}
     >
       <NavBar />
+      <div style={{ margin: "6rem 8rem" }}>{children}</div>
     </div>
   );
 }
