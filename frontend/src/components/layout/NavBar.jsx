@@ -29,6 +29,7 @@ const NavLink2 = ({ style, link, name }) => {
 };
 
 export default function NavBar() {
+  const { userId, SetUserId } = useContext(context);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { userType, SetUserType } = useContext(context);
   return (
@@ -54,11 +55,11 @@ export default function NavBar() {
         }}
       >
         <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
-          <img src={"/logo.jpg"} width={120} />
+          <img src={"/img/logo.jpg"} width={170} />
         </Link>
         <NavLink
-          link="/"
-          name={userType === "student" ? "받은 오퍼" : "보낸 오퍼"}
+          link={`/offer/${userType}/`}
+          name={"받은 오퍼"}
           style={{ marginLeft: "auto" }}
         />
         <div
@@ -91,13 +92,20 @@ export default function NavBar() {
           className="whiteContainer"
         >
           <div>
-            안녕하세요, <b>OOO님</b>
+            안녕하세요, <b>사용자님</b>
           </div>
           <hr
             color="var(--purple5)"
             style={{ width: "40%", borderRadius: "10px", margin: "-0.2rem" }}
           />
-          <NavLink2 link="/profile/0" name={"마이페이지"} />
+          <NavLink2
+            link={
+              userType === "student"
+                ? `/profile-student/${userId}`
+                : `/profile-company/${userId}`
+            }
+            name={"마이페이지"}
+          />
           <NavLink2 link="/setting" name={"설정"} />
           <hr
             color="var(--purple5)"
@@ -107,7 +115,7 @@ export default function NavBar() {
               margin: "-0.5rem",
             }}
           />
-          <NavLink2 link="/logout" name={"로그아웃"} />
+          <NavLink2 link="/" name={"로그아웃"} />
         </div>
       )}
     </div>

@@ -17,15 +17,12 @@ import ProfileEditCompany from "./pages/Profile/ProfileEditCompany";
 export const context = createContext({});
 
 function App() {
-  const [userState, SetUserState] = useState("logout");
   const [userId, SetUserId] = useState("");
   const [userType, setUserType] = useState("company");
 
   return (
     <context.Provider
       value={{
-        userState,
-        SetUserState,
         userId,
         SetUserId,
         userType,
@@ -37,23 +34,21 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/offer-student" element={<OfferStudent />} />
-          <Route path="/offer-company" element={<OfferCompany />} />
           <Route
-            path="/profile/:id"
+            path="/offer/:id"
             element={
-              userType === "student" ? <ProfileStudent /> : <ProfileCompany />
+              userType === "student" ? <OfferStudent /> : <OfferCompany />
             }
           />
+          <Route path="/profile-student/:id" element={<ProfileStudent />} />
+          <Route path="/profile-company/:id" element={<ProfileCompany />} />
           <Route
-            path="/profile-edit"
-            element={
-              userType === "student" ? (
-                <ProfileEditStudent />
-              ) : (
-                <ProfileEditCompany />
-              )
-            }
+            path="/profile-edit-student"
+            element={<ProfileEditStudent />}
+          />
+          <Route
+            path="/profile-edit-company"
+            element={<ProfileEditCompany />}
           />
         </Routes>
       </Router>

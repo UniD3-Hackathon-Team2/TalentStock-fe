@@ -56,14 +56,19 @@ export const WhiteContainerEdit = ({ children, overlayChildren }) => {
   );
 };
 export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
-  const { userType } = useContext(context);
+  const { userId, userType } = useContext(context);
   const patchData = async () => {
     const data = { memberType: userType.toUpperCase(), email: "hi" };
-    console.log(data);
+    console.log(userId, "hihihi");
     try {
       const response = await axios.patch(
-        "http://43.202.86.217/api/v1/member/1",
-        data
+        `http://43.202.86.217/api/v1/member/${userId}`,
+        data,
+        {
+          headers: {
+            Authorization: userId,
+          },
+        }
       );
       console.log(response.data);
     } catch (error) {

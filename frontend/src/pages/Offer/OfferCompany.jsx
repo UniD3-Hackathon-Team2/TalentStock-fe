@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -12,8 +12,12 @@ import Typography from "@mui/material/Typography";
 import "./OfferCompany.css";
 import Layout from "../../components/layout/Layout";
 
+import { context } from "../../App";
+
 function OfferCompany() {
   const [data, setData] = useState(offers_company);
+  const {userType, SetUserType} = useContext(context);
+
   return (
     <Layout>
       <div className="offer_list_container">
