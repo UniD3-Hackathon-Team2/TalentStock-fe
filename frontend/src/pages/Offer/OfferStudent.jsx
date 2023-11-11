@@ -9,15 +9,13 @@ import { offers } from "./offers";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-
 import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
 import { context } from "../../App";
 
 function OfferStudent() {
-  const {userType, setUserType} = useContext(context);
-  const {userId, SetUserId} = useContext(context);
-
+  const { userType, setUserType } = useContext(context);
+  const { userId, SetUserId } = useContext(context);
 
   const handleCompany = (data) => {
     // console.log(userId)
@@ -25,7 +23,7 @@ function OfferStudent() {
     // console.log(data.id);
     // SetUserType("company")
     // Navigate(`/profile/${data.id}`)
-  }
+  };
   return (
     <Layout>
       <div className="offer_list_container">

@@ -3,18 +3,21 @@ import { useForm } from "react-hook-form";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import "./Main.css";
 
 import { context } from "../../App";
 
 import Layout from "../../components/layout/Layout";
+import MainUser from "./MainUser";
 
 const BASEURL = "http://43.202.86.217/api/v1";
 
 function Main() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     RecommendedStudents(
@@ -99,8 +102,6 @@ function Main() {
     "응용통계학과",
   ];
 
-  console.log(userId);
-
   return (
     <Layout>
       <form className="searchForm" onSubmit={handleSubmit(onSubmit)}>
@@ -146,53 +147,9 @@ function Main() {
         </button>
       </form>
 
-      {recommendedStudents.map((recommendedStudent) => {
-        return (
-          <div className="recommendedStudentsDiv">
-            <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-            <div className="infoDiv">
-              <div className="firstLine">
-                <span className="name">{recommendedStudent.name}</span>
-                {userType !== "student" ? (
-                  <button
-                    className="suggestions"
-                    onClick={() => {
-                      try {
-                        axios({
-                          url: "/offer",
-                          method: "post",
-                          baseURL: BASEURL,
-                          headers: {
-                            Authorization: userId,
-                          },
-                          data: {
-                            offerType: "JOB",
-                            receiverId: parseInt(
-                              recommendedStudent.memberId.replace(/[^0-9]/g, "")
-                            ),
-                          },
-                        }).then((res) => console.log(res));
-                      } catch (error) {
-                        console.log(
-                          "can't use RecommendedStudents system",
-                          error
-                        );
-                      }
-                    }}
-                  >
-                    제안하기
-                  </button>
-                ) : null}
-              </div>
-
-              <div class="line"></div>
-              <span className="info sub">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
-              <span className="info">{recommendedStudent.shortIntroduce}</span>
-              <div className="interests">{recommendedStudent.interest}</div>
-            </div>
-          </div>
-        );
-      })}
+      {recommendedStudents.map((recommendedStudent) => (
+        <MainUser recommendedStudent={recommendedStudent} />
+      ))}
     </Layout>
   );
 }
