@@ -11,7 +11,10 @@ const BASEURL = "";
 function Login() {
   const { userState, SetUserState } = useContext(context);
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {};
+
+  const onSubmit = (data) => {
+    PostLogIn(data.id, data.password);
+  };
   const PostLogIn = async (id, password) => {
     try {
       const res = await axios({
@@ -37,22 +40,24 @@ function Login() {
 
   return (
     <>
-      <div className="">
-        <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
-          <input
-            className="idInput"
-            placeholder="사용자 이름"
-            type="text"
-            {...register("id")}
-          />
-          <input
-            className="passwordInput"
-            placeholder="비밀번호"
-            type="text"
-            {...register("password")}
-          />
-          <input className="submitInput" type="submit" value="다음" />
-        </form>
+      <div className="loginbackground">
+        <div className="loginoutFormDiv">
+          <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
+            <span className="mainLabel">로그인</span>
+            <span className="label">이메일</span>
+            <input className="idInput" type="text" {...register("id")} />
+            <span className="label">비밀번호</span>
+            <input
+              className="passwordInput"
+              type="text"
+              {...register("password")}
+            />
+
+            <button className="button">이메일 비밀번호 찾기</button>
+            <button className="button">회원가입</button>
+            <input className="submitInput" type="submit" value="다음" />
+          </form>
+        </div>
       </div>
     </>
   );
