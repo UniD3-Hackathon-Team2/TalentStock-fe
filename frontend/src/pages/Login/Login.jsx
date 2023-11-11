@@ -6,7 +6,7 @@ import "./Login.css";
 
 import { context } from "../../App";
 
-const BASEURL = "";
+const BASEURL = "http://43.202.86.217/api/v1/member";
 
 function Login() {
   const { userState, SetUserState } = useContext(context);
@@ -23,19 +23,14 @@ function Login() {
         url: "/login",
         method: "post",
         baseURL: BASEURL,
-        responseType: "json",
-        headers: {
-          "Content-Type": "application/json",
-        },
         data: {
           id: id,
-          password: password,
+          pw: password,
         },
       });
-      if (res.status === 200) {
+      console.log(res.data);
+      if (res.data.isSuccess) {
         navigate("/main");
-      }
-      if (res.status === 300) {
       }
     } catch (error) {
       console.log("can't use login system", error);
