@@ -16,13 +16,11 @@ function App() {
   return (
     <context.Provider value={{ userState, SetUserState }}>
       <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/main" element={<Main />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/main" element={<Main />} />
+        </Routes>
       </Router>
     </context.Provider>
   );
