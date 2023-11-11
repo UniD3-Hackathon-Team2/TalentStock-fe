@@ -1,16 +1,38 @@
-
-
-.success {
-  color: #6139D0;
-
-  text-align: center;
+.offer_list_title {
+  color: #FFF;
+  /* text-align: center; */
   font-family: Inter;
-  font-size: 24px;
+  font-size: 35px;
   font-style: normal;
   font-weight: 700;
+  line-height: 24px; /* 68.571% */
+  letter-spacing: -0.105px;
+  margin-bottom: 30px;
+}
+
+.successs {
+  color: #6139D0;
+  text-align: center;
+  font-family: Inter;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 1000;
   line-height: 24px; /* 100% */
   letter-spacing: -0.072px;
 }
 .detail {
-  align-items: "center"
+  align-items: "center";
+  margin: 10px;
+}
+
+.buttons {
+  margin:10px;
+  flex-direction: column;
+}
+
+.list_top {
+  display: inline-flex;
+  align-items: center;
+  gap: 543px;
+  /* font-weight: 500; */
 }

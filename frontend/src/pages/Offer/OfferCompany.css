@@ -1,0 +1,7 @@
+.offer_list_table .list{
+  overflow: none;
+}
+
+.offer_list_table .list::-webkit-scrollbar{
+  display: none;
+}

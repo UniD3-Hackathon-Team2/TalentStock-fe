@@ -8,7 +8,7 @@ export const offers = [
   },
   {
     pid: 1,
-    success: "수락완료",
+    success: "수락 대기중",
     name: "삼성1",
     amount: 100000,
     position: "개발"
