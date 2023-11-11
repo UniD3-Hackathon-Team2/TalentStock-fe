@@ -2,29 +2,41 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+  MDBInput
+}
+from 'mdb-react-ui-kit';
 import "./Login.css";
 
 import { context } from "../../App";
 
 const BASEURL = "http://43.202.86.217/api/v1/member";
 
-function Login() {
+function NewLogin() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    PostLogIn(data.id, data.password);
+    PostLogIn(data.email, data.password);
   };
-  const PostLogIn = async (id, password) => {
+  const PostLogIn = async (email, password) => {
     try {
       const res = await axios({
         url: "/login",
         method: "post",
         baseURL: BASEURL,
         data: {
-          id: id,
+          id: email,
           pw: password,
         },
       });
@@ -40,6 +52,7 @@ function Login() {
   };
 
   return (
+
     <>
       <div className="loginbackground">
         <div className="loginoutFormDiv">
@@ -64,7 +77,8 @@ function Login() {
         </div>
       </div>
     </>
+    
   );
 }
 
-export default Login;
+export default NewLogin;
