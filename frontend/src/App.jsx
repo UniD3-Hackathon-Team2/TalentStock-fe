@@ -16,15 +16,12 @@ import ProfileCompany from "./pages/Profile/ProfileCompany";
 export const context = createContext({});
 
 function App() {
-  const [userState, SetUserState] = useState("logout");
   const [userId, SetUserId] = useState("");
   const [userType, setUserType] = useState("student");
 
   return (
     <context.Provider
       value={{
-        userState,
-        SetUserState,
         userId,
         SetUserId,
         userType,

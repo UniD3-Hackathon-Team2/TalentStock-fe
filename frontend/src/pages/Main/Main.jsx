@@ -5,15 +5,17 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import axios from "axios";
 
 import "./Main.css";
-import { Context } from "react";
+
+import { context } from "../../App";
 
 import Layout from "../../components/layout/Layout";
 
 const BASEURL = "";
 
 function Main() {
-  const { userState, SetUserState, userId, SetUserId } = useContext;
+  const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
+
   const onSubmit = (data) => {
     console.log(data);
   };

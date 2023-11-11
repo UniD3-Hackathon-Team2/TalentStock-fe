@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -6,10 +6,10 @@ import "./Login.css";
 
 import { context } from "../../App";
 
-const BASEURL = "";
+const BASEURL = "http://43.202.86.217/api/v1/member";
 
 function Login() {
-  const { userState, SetUserState } = useContext(context);
+  const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -23,19 +23,16 @@ function Login() {
         url: "/login",
         method: "post",
         baseURL: BASEURL,
-        responseType: "json",
-        headers: {
-          "Content-Type": "application/json",
-        },
         data: {
           id: id,
-          password: password,
+          pw: password,
         },
       });
-      if (res.status === 200) {
+      console.log(res.data.result.memberId);
+      if (res.data.isSuccess) {
+        setUserType(res.data.result.memberType);
+        SetUserId(res.data.result.memberId);
         navigate("/main");
-      }
-      if (res.status === 300) {
       }
     } catch (error) {
       console.log("can't use login system", error);
