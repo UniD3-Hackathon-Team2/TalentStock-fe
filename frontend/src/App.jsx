@@ -18,7 +18,7 @@ export const context = createContext({});
 function App() {
   const [userState, SetUserState] = useState("logout");
   const [userId, SetUserId] = useState("");
-  const [userType, setUserType] = useState("student");
+  const [userType, setUserType] = useState("company");
 
   return (
     <context.Provider
