@@ -23,6 +23,7 @@ function Login() {
         url: "/login",
         method: "post",
         baseURL: BASEURL,
+        responseType: "json",
         headers: {
           "Content-Type": "application/json",
         },

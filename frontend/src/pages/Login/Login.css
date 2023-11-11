@@ -31,7 +31,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -57,8 +56,8 @@
   line-height: 140%;
 }
 
-.idInput,
-.passwordInput {
+.loginoutFormDiv .idInput,
+.loginoutFormDiv .passwordInput {
   position: relative;
 
   width: 98%;
@@ -84,7 +83,7 @@
   line-height: normal;
 }
 
-.submitInput {
+.loginoutFormDiv .submitInput {
   width: 100%;
 
   height: 40px;
