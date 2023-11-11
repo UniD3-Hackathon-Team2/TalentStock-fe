@@ -126,34 +126,24 @@ function Main() {
           <SearchIcon />
         </button>
       </form>
-      <div className="recommendedStudentsDiv">
-        <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-        <div className="infoDiv">
-          <div className="firstLine">
-            <span className="name">{recommendedStudents[0].name}</span>
-            <button className="suggestions">제안하기</button>
-          </div>
+      {recommendedStudents.map((recommendedStudent) => {
+        return (
+          <div className="recommendedStudentsDiv">
+            <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
+            <div className="infoDiv">
+              <div className="firstLine">
+                <span className="name">{recommendedStudent.name}</span>
+                <button className="suggestions">제안하기</button>
+              </div>
 
-          <div class="line"></div>
-          <span className="info">{`${recommendedStudents[0].university} ${recommendedStudents[0].department} ${recommendedStudents[0].grade}학년`}</span>
-          <span className="info">{recommendedStudents[0].short_introduce}</span>
-          <div className="interests">{recommendedStudents[0].interests}</div>
-        </div>
-      </div>
-      <div className="recommendedStudentsDiv">
-        <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-        <div className="infoDiv">
-          <div className="firstLine">
-            <span className="name">{recommendedStudents[0].name}</span>
-            <button className="suggestions">제안하기</button>
+              <div class="line"></div>
+              <span className="info">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
+              <span className="info">{recommendedStudent.short_introduce}</span>
+              <div className="interests">{recommendedStudent.interests}</div>
+            </div>
           </div>
-
-          <div class="line"></div>
-          <span className="info">{`${recommendedStudents[0].university} ${recommendedStudents[0].department} ${recommendedStudents[0].grade}학년`}</span>
-          <span className="info">{recommendedStudents[0].short_introduce}</span>
-          <div className="interests">{recommendedStudents[0].interests}</div>
-        </div>
-      </div>
+        );
+      })}
     </Layout>
   );
 }
