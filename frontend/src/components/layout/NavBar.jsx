@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { context } from "../../App";
+
 
 const NavLink = ({ style, link, name }) => {
+  
   return (
     <Link
       to={link}
@@ -27,7 +30,10 @@ const NavLink2 = ({ style, link, name }) => {
 };
 
 export default function NavBar() {
+  const {userType, setUserType} = useContext(context);
+  const {userId, SetUserId} = useContext(context);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <div
       style={{
@@ -53,7 +59,7 @@ export default function NavBar() {
         <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
           <img src={"img/logo.jpg"} width={170} />
         </Link>
-        <NavLink link="/" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
+        <NavLink link={`/offer/${userType}/`} name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
           style={{
             padding: "1rem 2rem",
@@ -100,7 +106,7 @@ export default function NavBar() {
               margin: "-0.5rem",
             }}
           />
-          <NavLink2 link="/logout" name={"로그아웃"} />
+          <NavLink2 link="/" name={"로그아웃"} />
         </div>
       )}
     </div>
