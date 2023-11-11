@@ -50,18 +50,9 @@ export default function NavBar() {
           color: "var(--purple4)",
         }}
       >
-        <NavLink
-          link="/"
-          name={
-            <React.Fragment>
-              <ExploreOutlinedIcon
-                fontSize="large"
-                style={{ marginRight: "1rem" }}
-              />
-              TALENT STOCK
-            </React.Fragment>
-          }
-        />
+        <Link to="/main" style={{padding: "0.7rem 1.5rem"}}>
+          <img src={"img/logo.jpg"} width={120} />
+        </Link>
         <NavLink link="/" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
           style={{
