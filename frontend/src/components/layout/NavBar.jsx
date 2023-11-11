@@ -53,7 +53,7 @@ export default function NavBar() {
         <Link to="/main" style={{padding: "0.7rem 1.5rem"}}>
           <img src={"img/logo.jpg"} width={120} />
         </Link>
-        <NavLink link="/" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
+        <NavLink link="/offer" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
         <div
           style={{
             padding: "1rem 2rem",
@@ -100,7 +100,7 @@ export default function NavBar() {
               margin: "-0.5rem",
             }}
           />
-          <NavLink2 link="/logout" name={"로그아웃"} />
+          <NavLink2 link="/" name={"로그아웃"} />
         </div>
       )}
     </div>

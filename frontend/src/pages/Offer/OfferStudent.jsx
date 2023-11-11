@@ -9,11 +9,19 @@ import { offers } from "./offers";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+
 import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
 
 function OfferStudent() {
   const [data, setData] = useState(offers);
+  const {userType, SetUserType} = useContext(context);
+
+  const handleCompany = (data) => {
+    print(data.id);
+    // SetUserType("company")
+    // Navigate(`/profile/${data.id}`)
+  }
   return (
     <Layout>
       <div className="offer_list_container">
@@ -162,6 +170,7 @@ function OfferStudent() {
                               margin: "5px",
                               width: "200px",
                             }}
+                            onClick={handleCompany}
                           >
                             공고 상세보기
                           </Button>
