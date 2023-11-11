@@ -1,76 +1,143 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { offers } from "./offers";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import "./ProfileCompany.css";
 import Layout from "../../components/layout/Layout";
+import {
+  GridElementWrapper,
+  GridElementWrapperRight,
+  GridWrapper,
+  WhiteContainer,
+  full,
+  left,
+  right,
+} from "../../components/Profile/Layout";
+import { Accordion2 } from "../../components/Accordion";
 
 function ProfileCompany() {
-  const [data, setData] = useState(offers);
+  const [companyInfo, setCompanyInfo] = useState({
+    pid: 0,
+    info: "random",
+    name: "삼성",
+    introduce: "저희는 어쩌구 저쩌구",
+    interestedFields: [
+      "관심1",
+      "ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ",
+      "ㅁㅁㅁ",
+      "ㅁㅁㅁㅁㅁ",
+      "ㅁㅁㅁㅁㅁ",
+      "ㅁㅁㅁㅁ",
+    ],
+    openJob: {
+      jobTitle: "프런트앤드 개발자",
+      jobDescription: "프런트앤드 개발자, 이걸 합니다",
+      vaca: true,
+      workYears: 100000,
+    },
+  });
+
+  const params = useParams();
+  console.log(params);
+
   return (
-    <Layout>
-      <div
-        style={{
-          backgroundColor: "#ffffff",
-          width: "80%",
-          margin: "auto",
-          borderRadius: "20px",
-          padding: "20px",
-        }}
-      >
-        {offers.map((row, index) => (
-          <ul>
+    <Layout style={{ rowGap: "2rem" }}>
+      <WhiteContainer>
+        <GridWrapper container>
+          <GridElementWrapper item xs={left}>
             <div
               style={{
-                margin: "auto",
-                width: "80%",
-                backgroundColor: "#ffffff",
-                textAlign: "center",
+                width: "150px",
+                height: "150px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "3px solid var(--purple4)",
+                borderRadius: "100px",
+                overflow: "hidden",
               }}
             >
               <img
-                src="로고.jpg"
-                style={{ margin: "auto", width: "90%", border: "5px solid" }}
-                alt={`로고 이미지 - ${row.name}`}
+                src="/logo.jpg"
+                style={{ width: "90%" }}
+                alt={`로고 이미지 - ${companyInfo.name}`}
               />
             </div>
-            <div class="index">기업명</div>
-            <div
-              class="contents"
-              style={{ height: "100px", textAlign: "center" }}
-            >
-              {row.name}
-            </div>
-            <div class="index">관심분야</div>
-            <div
-              class="contents"
-              style={{ height: "200px", textAlign: "center" }}
-            >
-              {row.info}
-            </div>
-            <div>
-              <div class="container">
-                <div class="index-1">방학 기간 내 의무 근로 여부</div>
-                <div class="contents">
-                  <span>{row.vaca}</span>
-                </div>
+          </GridElementWrapper>
+
+          <GridElementWrapperRight item xs={right}>
+            <GridWrapper container>
+              <GridElementWrapper item xs={full}>
+                <h3 style={{ lineHeight: "0" }}>{companyInfo.name}</h3>
+              </GridElementWrapper>
+
+              <GridElementWrapper item xs={12}>
+                {companyInfo.introduce}
+              </GridElementWrapper>
+            </GridWrapper>
+          </GridElementWrapperRight>
+        </GridWrapper>
+
+        <GridWrapper container>
+          <GridElementWrapper item xs={full}>
+            <h3>관심분야</h3>
+          </GridElementWrapper>
+
+          <GridElementWrapper item xs={full}>
+            <GridWrapper container>
+              {companyInfo.interestedFields.map((field, index) => (
+                <GridElementWrapper
+                  key={index}
+                  style={{
+                    margin: "0rem 1rem 1rem 0rem",
+                    padding: "0.8rem 2rem",
+                    backgroundColor: "var(--purple2)",
+                    color: "var(--white)",
+                    borderRadius: "2rem",
+                    fontWeight: "bold",
+                  }}
+                >
+                  # {field}
+                </GridElementWrapper>
+              ))}
+            </GridWrapper>
+          </GridElementWrapper>
+        </GridWrapper>
+      </WhiteContainer>
+      <WhiteContainer>
+        <GridWrapper container>
+          <GridElementWrapper item xs={full}>
+            <h3>
+              공고: <b>{companyInfo.openJob.jobTitle}</b>
+            </h3>
+          </GridElementWrapper>
+          <GridElementWrapper item xs={full}>
+            <div style={{ display: "flex", columnGap: "2rem" }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  rowGap: "1rem",
+                }}
+              >
+                <b>직무 설명</b>
+                <b>졸업 후 필수 근무 기간</b>
+                <b>방학 기간 내 의무 근로 여부</b>
               </div>
-              <div class="container">
-                <div class="index-1">졸업 후 의무 근로 년수</div>
-                <div class="contents">
-                  <span>{row.work_year}</span>
-                </div>
-              </div>
-              <div class="container">
-                <div class="index-1">필요 직무</div>
-                <div class="contents" style={{ textAlign: "center" }}>
-                  {row.needs}
-                </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  rowGap: "1rem",
+                }}
+              >
+                <div>{companyInfo.openJob.jobDescription}</div>
+                <div>{companyInfo.openJob.workYears}년</div>
+                <div>{companyInfo.openJob.vaca ? "예" : "아니요"}</div>
               </div>
             </div>
-          </ul>
-        ))}
-      </div>
+          </GridElementWrapper>
+        </GridWrapper>
+      </WhiteContainer>
     </Layout>
   );
 }

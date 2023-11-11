@@ -13,7 +13,7 @@ import {
 } from "../../components/Profile/Layout";
 
 export default function ProfileStudent() {
-  const [studentinfo, setStudentInfo] = React.useState({
+  const [studentInfo, setStudentInfo] = React.useState({
     name: "김OO",
     email: "email@email.com",
     university: "OO대학교",
@@ -135,23 +135,23 @@ export default function ProfileStudent() {
             sx={{ height: "10rem", alignItems: "center" }}
           >
             <AccountCircleIcon
-              sx={{ fontSize: "9rem", color: "var(--purple4)" }}
+              sx={{ fontSize: "150px", color: "var(--purple4)" }}
             />
           </GridElementWrapper>
 
           <GridElementWrapperRight item xs={right}>
             <GridWrapper container>
               <GridElementWrapper xs={2}>
-                <h3>{studentinfo.name}</h3>
+                <h3>{studentInfo.name}</h3>
               </GridElementWrapper>
               <GridElementWrapper xs={10}>
-                {studentinfo.email}
+                {studentInfo.email}
               </GridElementWrapper>
               <GridElementWrapper xs={12}>
-                {studentinfo.university} {studentinfo.department}
+                {studentInfo.university} {studentInfo.department}
               </GridElementWrapper>
               <GridElementWrapper xs={12}>
-                {studentinfo.introduce}
+                {studentInfo.introduce}
               </GridElementWrapper>
             </GridWrapper>
           </GridElementWrapperRight>
@@ -164,7 +164,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.interestedFields.map((field, index) => (
+              {studentInfo.interestedFields.map((field, index) => (
                 <GridElementWrapper
                   key={index}
                   style={{
@@ -190,7 +190,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.schooling.map(
+              {studentInfo.schooling.map(
                 (
                   {
                     periodStart,
@@ -223,8 +223,8 @@ export default function ProfileStudent() {
                                   marginRight: "2rem",
                                 }}
                               >
-                                {studentinfo.totalScore} /{" "}
-                                {studentinfo.gpaTotal}
+                                {studentInfo.totalScore} /{" "}
+                                {studentInfo.gpaTotal}
                               </div>
                             )}
                           </div>
@@ -249,7 +249,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.competitionsWon.map(
+              {studentInfo.competitionsWon.map(
                 (
                   { competitionName, prizeWon, dateWon, additionalInfo },
                   index
@@ -289,7 +289,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.participatedActivities.map(
+              {studentInfo.participatedActivities.map(
                 ({ name, date, additionalInfo }, index) => (
                   <React.Fragment key={index}>
                     <GridElementWrapper xs={full}>
@@ -323,7 +323,7 @@ export default function ProfileStudent() {
           <GridElementWrapper item xs={full}>
             <h3>어학 능력</h3>
           </GridElementWrapper>
-          {studentinfo.languages.map(({ name, level, exams }, index) => (
+          {studentInfo.languages.map(({ name, level, exams }, index) => (
             <React.Fragment key={index}>
               <GridElementWrapper
                 item
@@ -363,7 +363,7 @@ export default function ProfileStudent() {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {studentinfo.qualifications.map(({ name, date }, index) => (
+              {studentInfo.qualifications.map(({ name, date }, index) => (
                 <React.Fragment key={index}>
                   <GridElementWrapper xs={full}>
                     <div
@@ -396,7 +396,7 @@ export default function ProfileStudent() {
             xs={full}
             style={{ color: "var(--purple4)" }}
           >
-            {studentinfo.personalEssay.split("\n").map((line, index) => (
+            {studentInfo.personalEssay.split("\n").map((line, index) => (
               <React.Fragment key={index}>
                 {line}
                 <br />

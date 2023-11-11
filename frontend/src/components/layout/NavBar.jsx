@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+
+import { context } from "../../App";
 
 const NavLink = ({ style, link, name }) => {
   return (
@@ -28,6 +30,7 @@ const NavLink2 = ({ style, link, name }) => {
 
 export default function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { userType, SetUserType } = useContext(context);
   return (
     <div
       style={{
@@ -50,10 +53,14 @@ export default function NavBar() {
           color: "var(--purple4)",
         }}
       >
-        <Link to="/main" style={{padding: "0.7rem 1.5rem"}}>
-          <img src={"img/logo.jpg"} width={120} />
+        <Link to="/main" style={{ padding: "0.7rem 1.5rem" }}>
+          <img src={"/logo.jpg"} width={120} />
         </Link>
-        <NavLink link="/" name={"받은 오퍼"} style={{ marginLeft: "auto" }} />
+        <NavLink
+          link="/"
+          name={userType === "student" ? "받은 오퍼" : "보낸 오퍼"}
+          style={{ marginLeft: "auto" }}
+        />
         <div
           style={{
             padding: "1rem 2rem",
@@ -90,7 +97,7 @@ export default function NavBar() {
             color="var(--purple5)"
             style={{ width: "40%", borderRadius: "10px", margin: "-0.2rem" }}
           />
-          <NavLink2 link="/profile" name={"마이페이지"} />
+          <NavLink2 link="/profile/0" name={"마이페이지"} />
           <NavLink2 link="/setting" name={"설정"} />
           <hr
             color="var(--purple5)"

@@ -8,10 +8,11 @@ import Register from "./pages/Register/Register";
 import OfferCompany from "./pages/Offer/OfferCompany";
 import OfferStudent from "./pages/Offer/OfferStudent";
 
-import Layout from "./components/layout/Layout";
 import Main from "./pages/Main/Main";
 import ProfileStudent from "./pages/Profile/ProfileStudent";
 import ProfileCompany from "./pages/Profile/ProfileCompany";
+import ProfileEditStudent from "./pages/Profile/ProfileEditStudent";
+import ProfileEditCompany from "./pages/Profile/ProfileEditCompany";
 
 export const context = createContext({});
 
@@ -39,9 +40,19 @@ function App() {
           <Route path="/offer-student" element={<OfferStudent />} />
           <Route path="/offer-company" element={<OfferCompany />} />
           <Route
-            path="/profile"
+            path="/profile/:id"
             element={
               userType === "student" ? <ProfileStudent /> : <ProfileCompany />
+            }
+          />
+          <Route
+            path="/profile-edit"
+            element={
+              userType === "student" ? (
+                <ProfileEditStudent />
+              ) : (
+                <ProfileEditCompany />
+              )
             }
           />
         </Routes>

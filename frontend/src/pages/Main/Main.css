@@ -15,7 +15,6 @@
   border: 0px;
 
   color: var(--gray6, #333);
-  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -42,7 +41,6 @@
 
   color: var(--gray0, #fff);
   text-align: center;
-  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
@@ -94,7 +92,6 @@
   border: 0px;
 
   color: white;
-  font-family: Inter;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
@@ -112,7 +109,6 @@
   width: 100%;
 
   color: var(--gray6, #333);
-  font-family: Inter;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
@@ -128,7 +124,6 @@
 
 .recommendedStudentsDiv .info {
   color: var(--gray6, #333);
-  font-family: Inter;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -143,7 +138,6 @@
   border-radius: 10px;
 
   color: white;
-  font-family: Inter;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;
