@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
 
-  margin-top: 160px;
+  margin-top: 00px;
 }
 
 .searchForm select {
@@ -120,7 +120,8 @@
 }
 
 .recommendedStudentsDiv .line {
-  height: 3px;
+  height: 2px;
+  border-radius: 2px;
   width: 100%;
 
   background-color: black;
@@ -135,16 +136,20 @@
   line-height: 140%;
 }
 
-.recommendedStudentsDiv .interests {
-  width: 80px;
-  height: 30px;
+.recommendedStudentsDiv .sub {
+  color: gray;
+}
 
-  margin-bottom: 7px;
+.recommendedStudentsDiv .interests {
+  width: 110px;
+  height: 35px;
+
+  margin-bottom: 3px;
   border-radius: 10px;
 
   color: white;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;

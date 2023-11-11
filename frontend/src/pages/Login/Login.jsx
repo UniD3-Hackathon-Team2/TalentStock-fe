@@ -30,7 +30,7 @@ function Login() {
       });
       console.log(res.data.result.memberId);
       if (res.data.isSuccess) {
-        setUserType(res.data.result.memberType);
+        setUserType(res.data.result.memberType.toLowerCase());
         SetUserId(res.data.result.memberId);
         navigate("/main");
       }
@@ -45,7 +45,7 @@ function Login() {
         <div className="loginoutFormDiv">
           <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
             <Link to="/main">
-              <img src={"img/logo.jpg"} width={350} />
+              <img src={"img/logo.jpg"} width={450} />
             </Link>
             <span className="mainLabel">로그인</span>
             <span className="label">이메일</span>
@@ -53,7 +53,7 @@ function Login() {
             <span className="label">비밀번호</span>
             <input
               className="passwordInput"
-              type="text"
+              type="password"
               {...register("password")}
             />
 

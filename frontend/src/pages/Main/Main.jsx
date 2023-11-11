@@ -10,14 +10,19 @@ import { context } from "../../App";
 
 import Layout from "../../components/layout/Layout";
 
-const BASEURL = "";
+const BASEURL = "http://43.202.86.217/api/v1/member";
 
 function Main() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    RecommendedStudents(
+      data.interests,
+      data.university,
+      data.grade,
+      data.department
+    );
   };
 
   const [recommendedStudents, SetRecommendedStudents] = useState([
@@ -29,91 +34,36 @@ function Main() {
       short_introduce: "test",
       interests: "test",
     },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
-    {
-      name: "test",
-      university: "test",
-      department: "test",
-      grade: 1,
-      short_introduce: "test",
-      interests: "test",
-    },
   ]);
 
-  const RecommendedStudents = async () => {
+  const RecommendedStudents = async (
+    interest,
+    university,
+    grade,
+    department
+  ) => {
     try {
       const res = await axios({
-        url: "/recomendedstudents",
-        method: "get",
-        headers: {
-          id: userId,
-        },
+        url: "/search",
+        method: "post",
         baseURL: BASEURL,
-        responseType: "json",
+        data: {
+          interest: interest === "관심 분야 선택" ? null : interest,
+          university: university === "대학교 선택" ? null : university,
+          grade: grade === "학년 선택" ? null : grade,
+          department: department === "학과 선택" ? null : department,
+        },
       });
-      if (res.status === 200) SetRecommendedStudents(res.data);
+      if (res.data.isSuccess) {
+        SetRecommendedStudents(res.data.result.studentDtoList);
+      }
     } catch (error) {
       console.log("can't use RecommendedStudents system", error);
     }
   };
 
   useEffect(() => {
-    RecommendedStudents();
+    RecommendedStudents(null, "성균관대학교", null, null);
   }, []);
 
   const interestsList = [
@@ -203,9 +153,9 @@ function Main() {
               </div>
 
               <div class="line"></div>
-              <span className="info">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
-              <span className="info">{recommendedStudent.short_introduce}</span>
-              <div className="interests">{recommendedStudent.interests}</div>
+              <span className="info sub">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
+              <span className="info">{recommendedStudent.shortIntroduce}</span>
+              <div className="interests">{recommendedStudent.interest}</div>
             </div>
           </div>
         );
