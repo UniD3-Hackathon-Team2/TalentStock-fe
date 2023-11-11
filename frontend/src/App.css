@@ -44,6 +44,8 @@
 :root {
   --white: #fff;
   --purple4: #6139d0;
+  --purple2: #979bfc;
+  --purple1: #c0c2ff;
 }
 
 .whiteContainer {

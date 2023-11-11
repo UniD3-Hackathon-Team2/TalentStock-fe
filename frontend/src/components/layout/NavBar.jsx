@@ -29,10 +29,22 @@ const NavLink2 = ({ style, link, name }) => {
 export default function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <React.Fragment>
+    <div
+      style={{
+        position: "sticky",
+        top: "0",
+        width: "100vw",
+        height: "0px",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: "10000",
+      }}
+    >
       <div
         style={{
+          top: "0px",
           background: "var(--white)",
+          boxShadow: "0px 10px 20px 0px rgba(97, 57, 208, 0.50)",
           width: "100vw",
           display: "flex",
           color: "var(--purple4)",
@@ -69,44 +81,37 @@ export default function NavBar() {
       {isModalOpen && (
         <div
           style={{
-            position: "absolute",
-            width: "100vw",
-            display: "flex",
             color: "var(--purple4)",
+            boxShadow: "0px 10px 12px 0px rgba(97, 57, 208, 0.50)",
+            margin: "1rem 1rem 1rem auto",
+            padding: "2rem",
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "1.5rem",
+            alignItems: "center",
           }}
+          className="whiteContainer"
         >
-          <div
-            style={{
-              margin: "1rem 1rem 1rem auto",
-              padding: "2rem",
-              display: "flex",
-              flexDirection: "column",
-              rowGap: "1.5rem",
-              alignItems: "center",
-            }}
-            className="whiteContainer"
-          >
-            <div>
-              안녕하세요, <b>OOO님</b>
-            </div>
-            <hr
-              color="var(--purple5)"
-              style={{ width: "40%", borderRadius: "10px", margin: "-0.2rem" }}
-            />
-            <NavLink2 link="/" name={"마이페이지"} />
-            <NavLink2 link="/setting" name={"설정"} />
-            <hr
-              color="var(--purple5)"
-              style={{
-                width: "40%",
-                borderRadius: "10px",
-                margin: "-0.5rem",
-              }}
-            />
-            <NavLink2 link="/logout" name={"로그아웃"} />
+          <div>
+            안녕하세요, <b>OOO님</b>
           </div>
+          <hr
+            color="var(--purple5)"
+            style={{ width: "40%", borderRadius: "10px", margin: "-0.2rem" }}
+          />
+          <NavLink2 link="/profile" name={"마이페이지"} />
+          <NavLink2 link="/setting" name={"설정"} />
+          <hr
+            color="var(--purple5)"
+            style={{
+              width: "40%",
+              borderRadius: "10px",
+              margin: "-0.5rem",
+            }}
+          />
+          <NavLink2 link="/logout" name={"로그아웃"} />
         </div>
       )}
-    </React.Fragment>
+    </div>
   );
 }

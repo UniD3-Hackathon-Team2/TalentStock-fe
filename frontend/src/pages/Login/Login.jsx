@@ -47,7 +47,9 @@ function Login() {
       <div className="loginbackground">
         <div className="loginoutFormDiv">
           <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
-            <img src={"img/logo.jpg"} width={350} />
+            <Link to="/main">
+              <img src={"img/logo.jpg"} width={350} />
+            </Link>
             <span className="mainLabel">로그인</span>
             <span className="label">이메일</span>
             <input className="idInput" type="text" {...register("id")} />

@@ -10,15 +10,27 @@ import OfferStudent from "./pages/Offer/OfferStudent";
 
 import Layout from "./components/layout/Layout";
 import Main from "./pages/Main/Main";
+import ProfileStudent from "./pages/Profile/ProfileStudent";
+import ProfileCompany from "./pages/Profile/ProfileCompany";
 
 export const context = createContext({});
 
 function App() {
   const [userState, SetUserState] = useState("logout");
   const [userId, SetUserId] = useState("");
+  const [userType, setUserType] = useState("student");
 
   return (
-    <context.Provider value={{ userState, SetUserState, userId, SetUserId }}>
+    <context.Provider
+      value={{
+        userState,
+        SetUserState,
+        userId,
+        SetUserId,
+        userType,
+        setUserType,
+      }}
+    >
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -26,6 +38,12 @@ function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/offer-student" element={<OfferStudent />} />
           <Route path="/offer-company" element={<OfferCompany />} />
+          <Route
+            path="/profile"
+            element={
+              userType === "student" ? <ProfileStudent /> : <ProfileCompany />
+            }
+          />
         </Routes>
       </Router>
     </context.Provider>
