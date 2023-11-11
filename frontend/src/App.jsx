@@ -6,6 +6,7 @@ import "./App.css";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Layout from "./components/layout/Layout";
+import Main from "./pages/Main/Main";
 
 export const context = createContext({});
 
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/main" element={<Main />} />
         </Routes>
       </Router>
     </context.Provider>

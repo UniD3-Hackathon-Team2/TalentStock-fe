@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./Login.css";
 
@@ -11,6 +11,8 @@ const BASEURL = "";
 function Login() {
   const { userState, SetUserState } = useContext(context);
   const { register, handleSubmit } = useForm();
+
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     PostLogIn(data.id, data.password);
@@ -30,6 +32,7 @@ function Login() {
         },
       });
       if (res.status === 200) {
+        navigate("/main");
       }
       if (res.status === 300) {
       }
