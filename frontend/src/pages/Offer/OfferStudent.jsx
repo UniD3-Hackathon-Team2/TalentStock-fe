@@ -21,10 +21,9 @@ function OfferStudent() {
         <div className="offer_list_table" style={{ width: "1000px" }}>
           <List
             sx={{
-              bgcolor: "background.paper",
               position: "relative",
               overflow: "auto",
-              maxHeight: 300,
+              maxHeight: 500,
               "& ul": { padding: 0 },
             }}
             subheader={<li />}
@@ -32,55 +31,124 @@ function OfferStudent() {
             {offers.map((row) => (
               <li key={`section-${row.name}`}>
                 <ul>
-                  <ListSubheader>{`${row.name}`}</ListSubheader>
+                  <ListSubheader
+                    sx={{
+                      display: "none",
+                    }}
+                  >
+                    {row.name}
+                  </ListSubheader>
                   <ListItem key={`item-${row.amount}-${row.position}`}>
                     <Box
                       sx={{
+                        width: "100%",
+                        height: "100%",
+                        bgcolor: "white",
                         display: "flex",
                         justifyContent: "space-between",
                         alignItems: "center",
                         padding: "16px",
                         border: "1px solid #E0E0E0",
-                        borderRadius: "4px",
+                        borderRadius: "15px",
                         marginBottom: "8px",
                       }}
                     >
-                      <ListItemText
-                        className="success"
-                        primary={`${row.success}`}
-                      />
+                      <Typography
+                        variant="h6"
+                        component="span"
+                        style={{
+                          color: "#8A6AE3",
+                          fontSize: 25,
+                          fontWeight: 1000,
+                          marginLeft: 70,
+                        }}
+                      >
+                        {row.success}
+                      </Typography>
                       <Box
                         sx={{
                           display: "flex",
                           flexDirection: "column",
-                          alignItems: "center",
+                          // alignItems: "center",
                           gap: "8px",
                         }}
                       >
-                        <Typography
-                          variant="h6"
-                          component="span"
-                          style={{ color: "#8A6AE3" }}
-                        >
-                          {row.name}
-                        </Typography>
-                        <ListItemText primary={`에서 오퍼를 보냈습니다`} />
-                        <ListItemText primary={`장학금 금액 ${row.amount}`} />
-                        <ListItemText primary={`포지션 ${row.position}`} />
+                        <ListItemText className="list_top">
+                          <Typography
+                            variant="body1"
+                            component="span"
+                            style={{
+                              color: "#6A58D1",
+                              fontSize: 30,
+                              fontWeight: 800,
+                              display: "inline-block",
+                            }}
+                          >
+                            {row.name}
+                          </Typography>
+                          <Typography
+                            style={{
+                              fontSize: 25,
+                              fontWeight: 800,
+                              display: "inline-block",
+                            }}
+                          >
+                            에서 오퍼를 받았습니다
+                          </Typography>
+                        </ListItemText>
+
+                        <ListItemText
+                          primary={
+                            <Typography
+                              variant="body1"
+                              component="span"
+                              style={{
+                                color: "#6A58D1",
+                                fontSize: 18,
+                                fontWeight: 800,
+                              }}
+                            >
+                              장학금 금액
+                            </Typography>
+                          }
+                          secondary={row.amount}
+                        />
+                        <ListItemText
+                          primary={
+                            <Typography
+                              variant="body1"
+                              component="span"
+                              style={{
+                                color: "#6A58D1",
+                                fontSize: 18,
+                                fontWeight: 800,
+                              }}
+                            >
+                              포지션
+                            </Typography>
+                          }
+                          secondary={row.position}
+                        />
                       </Box>
-                      <Box>
-                        <Button
-                          variant="outlined"
-                          style={{ color: "#6A58D1", borderColor: "#6A58D1" }}
-                        >
-                          수락하기
-                        </Button>
-                        <Button
-                          variant="contained"
-                          style={{ backgroundColor: "#6A58D1", color: "white" }}
-                        >
-                          공고 상세보기
-                        </Button>
+                      <Box sx={{alignItems: "center", justifyContent: "center" }}>
+                        <Box sx={{ flexDirection: "column"}}>
+                          <Button
+                            className="buttons"
+                            variant="outlined"
+                            style={{ color: "#6A58D1", borderColor: "#6A58D1", fontSize: "18px", fontWeight: 600, margin: "5px", width: "200px"}}
+                          >
+                            수락하기
+                          </Button>
+                        </Box>
+                        <Box sx={{ flexDirection: "column" }}>
+                          <Button
+                            className="buttons"
+                            variant="contained"
+                            style={{ backgroundColor: "#6A58D1", color: "white",  fontSize: "18px", fontWeight: 600, margin: "5px", width: "200px" }}
+                          >
+                            공고 상세보기
+                          </Button>
+                        </Box>
                       </Box>
                     </Box>
                   </ListItem>
