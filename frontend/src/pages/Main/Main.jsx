@@ -27,6 +27,7 @@ function Main() {
       data.department
     );
   };
+  console.log(userId);
 
   const [recommendedStudents, SetRecommendedStudents] = useState([
     {

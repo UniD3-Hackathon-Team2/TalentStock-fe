@@ -7,17 +7,6 @@
   background: linear-gradient(251deg, #8a6ae3 7.73%, #3338b3 100%);
 }
 
-.loginoutFormDiv {
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0%);
-
-  width: 558px;
-  height: 100%;
-
-  background-color: white;
-}
-
 .loginoutForm {
   position: relative;
 
@@ -34,26 +23,6 @@
   justify-content: space-between;
 }
 
-.loginoutFormDiv .mainLabel {
-  width: 100%;
-
-  color: var(--gray6, #333);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-}
-
-.loginoutFormDiv .label {
-  width: 100%;
-
-  color: var(--gray6, #333);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 140%;
-}
-
 .loginoutFormDiv .idInput,
 .loginoutFormDiv .passwordInput {
   position: relative;
@@ -67,32 +36,16 @@
   background: #fff;
 }
 
-.loginoutFormDiv .button {
-  border: 0px;
-  background-color: white;
-
-  color: #979797;
-
-  text-align: center;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+.button {
+  border-radius: 2rem;
+  width: 300px;
+  background: none;
+  border: none;
+  color: white;
 }
-
-.loginoutFormDiv .submitInput {
-  width: 100%;
-
-  height: 40px;
-  border: 0px;
-
-  border-radius: 15px;
+.submitInput {
+  padding: 1rem;
+  border-radius: 2rem;
+  width: 300px;
   background: #979bfc;
-
-  color: var(--gray0, #fff);
-  text-align: center;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
 }

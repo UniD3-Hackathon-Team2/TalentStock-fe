@@ -6,11 +6,13 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import OfferCompany from "./pages/Offer/OfferCompany";
 import OfferStudent from "./pages/Offer/OfferStudent";
+
 import Main from "./pages/Main/Main";
 import ProfileStudent from "./pages/Profile/ProfileStudent";
 import ProfileCompany from "./pages/Profile/ProfileCompany";
 import ProfileEditStudent from "./pages/Profile/ProfileEditStudent";
 import ProfileEditCompany from "./pages/Profile/ProfileEditCompany";
+
 export const context = createContext({});
 
 function App() {

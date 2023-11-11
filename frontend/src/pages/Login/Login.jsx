@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Login.css";
 
 import { context } from "../../App";
+import LoginLayout from "../../components/layout/LoginLayout";
 
 const BASEURL = "http://43.202.86.217/api/v1/member";
 
@@ -40,30 +41,47 @@ function Login() {
   };
 
   return (
-    <>
-      <div className="loginbackground">
-        <div className="loginoutFormDiv">
-          <form className="loginoutForm" onSubmit={handleSubmit(onSubmit)}>
-            <Link to="/main">
-              <img src={"img/logo.jpg"} width={450} />
-            </Link>
-            <span className="mainLabel">로그인</span>
-            <span className="label">이메일</span>
-            <input className="idInput" type="text" {...register("id")} />
-            <span className="label">비밀번호</span>
-            <input
-              className="passwordInput"
-              type="password"
-              {...register("password")}
-            />
-
-            <button className="button">이메일 비밀번호 찾기</button>
-            <button className="button">회원가입</button>
-            <input className="submitInput" type="submit" value="다음" />
-          </form>
+    <LoginLayout>
+      <form
+        style={{ color: "white" }}
+        className="loginoutForm"
+        onSubmit={handleSubmit(onSubmit)}
+      >
+        <h1>로그인</h1>
+        <div style={{ display: "flex" }}>
+          <h3 className="label">이메일</h3>
+          <input
+            className="idInput"
+            type="text"
+            {...register("id")}
+            style={{
+              padding: "0.5rem",
+              marginLeft: "1rem",
+              borderRadius: "2rem",
+              width: "260px",
+            }}
+          />
         </div>
-      </div>
-    </>
+        <div style={{ display: "flex" }}>
+          <h3 className="label">비밀번호</h3>
+          <input
+            className="passwordInput"
+            type="password"
+            {...register("password")}
+            style={{
+              padding: "0.5rem",
+              marginLeft: "1rem",
+              borderRadius: "2rem",
+              width: "260px",
+            }}
+          />
+        </div>
+
+        <button className="button">이메일 비밀번호 찾기</button>
+        <button className="button">회원가입</button>
+        <input className="submitInput" type="submit" value="다음" />
+      </form>
+    </LoginLayout>
   );
 }
 
