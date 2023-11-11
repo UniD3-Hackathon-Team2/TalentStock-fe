@@ -10,7 +10,7 @@ import { context } from "../../App";
 
 import Layout from "../../components/layout/Layout";
 
-const BASEURL = "http://43.202.86.217/api/v1/member";
+const BASEURL = "http://43.202.86.217/api/v1";
 
 function Main() {
   const { userId, SetUserId, userType, setUserType } = useContext(context);
@@ -44,7 +44,7 @@ function Main() {
   ) => {
     try {
       const res = await axios({
-        url: "/search",
+        url: "/member/search",
         method: "post",
         baseURL: BASEURL,
         data: {
@@ -55,6 +55,7 @@ function Main() {
         },
       });
       if (res.data.isSuccess) {
+        console.log(res.data.result.studentDtoList);
         SetRecommendedStudents(res.data.result.studentDtoList);
       }
     } catch (error) {
@@ -97,6 +98,8 @@ function Main() {
     "사이버보안학과",
     "응용통계학과",
   ];
+
+  console.log(userId);
 
   return (
     <Layout>
@@ -142,6 +145,7 @@ function Main() {
           <SearchIcon />
         </button>
       </form>
+
       {recommendedStudents.map((recommendedStudent) => {
         return (
           <div className="recommendedStudentsDiv">
@@ -149,7 +153,36 @@ function Main() {
             <div className="infoDiv">
               <div className="firstLine">
                 <span className="name">{recommendedStudent.name}</span>
-                <button className="suggestions">제안하기</button>
+                {userType !== "student" ? (
+                  <button
+                    className="suggestions"
+                    onClick={() => {
+                      try {
+                        axios({
+                          url: "/offer",
+                          method: "post",
+                          baseURL: BASEURL,
+                          headers: {
+                            Authorization: userId,
+                          },
+                          data: {
+                            offerType: "JOB",
+                            receiverId: parseInt(
+                              recommendedStudent.memberId.replace(/[^0-9]/g, "")
+                            ),
+                          },
+                        }).then((res) => console.log(res));
+                      } catch (error) {
+                        console.log(
+                          "can't use RecommendedStudents system",
+                          error
+                        );
+                      }
+                    }}
+                  >
+                    제안하기
+                  </button>
+                ) : null}
               </div>
 
               <div class="line"></div>

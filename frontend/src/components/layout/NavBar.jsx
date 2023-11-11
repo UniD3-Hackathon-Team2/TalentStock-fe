@@ -84,7 +84,7 @@ export default function NavBar() {
           className="whiteContainer"
         >
           <div>
-            안녕하세요, <b>OOO님</b>
+            안녕하세요, <b>사용자님</b>
           </div>
           <hr
             color="var(--purple5)"
