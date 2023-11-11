@@ -9,7 +9,7 @@ import { Context } from "react";
 
 import Layout from "../../components/layout/Layout";
 
-const BASEURL = "";
+const BASEURL = "/api/v1/member/";
 
 function Main() {
   const { userState, SetUserState, userId, SetUserId } = useContext;
@@ -17,6 +17,7 @@ function Main() {
   const onSubmit = (data) => {
     console.log(data);
   };
+  console.log(userId);
 
   const [recommendedStudents, SetRecommendedStudents] = useState([
     {

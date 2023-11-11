@@ -6,7 +6,7 @@ import "./Login.css";
 
 import { context } from "../../App";
 
-const BASEURL = "";
+const BASEURL = "http://43.202.86.217";
 
 function Login() {
   const { userState, SetUserState } = useContext(context);
@@ -20,7 +20,7 @@ function Login() {
   const PostLogIn = async (id, password) => {
     try {
       const res = await axios({
-        url: "/login",
+        url: "/api/v1/member/login",
         method: "post",
         baseURL: BASEURL,
         responseType: "json",
@@ -34,6 +34,7 @@ function Login() {
       });
       if (res.status === 200) {
         navigate("/main");
+        console.log(res);
       }
       if (res.status === 300) {
       }

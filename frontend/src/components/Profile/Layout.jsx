@@ -3,8 +3,12 @@ import Grid from "@mui/material/Grid";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 import Button from "@mui/material/Button";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
+
+import axios from "axios";
+
+import { context } from "../../App";
 
 export const WhiteContainer = styled("div")({
   backgroundColor: "var(--white)",
@@ -52,6 +56,20 @@ export const WhiteContainerEdit = ({ children, overlayChildren }) => {
   );
 };
 export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
+  const { userType } = useContext(context);
+  const patchData = async () => {
+    const data = { memberType: userType.toUpperCase(), email: "hi" };
+    console.log(data);
+    try {
+      const response = await axios.patch(
+        "http://43.202.86.217/api/v1/member/1",
+        data
+      );
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div
       style={{
@@ -59,7 +77,7 @@ export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
         top: "0",
         left: "0",
         zIndex: "1000000",
-        backgroundColor: "rgba(151, 155, 252, 0.70)",
+        backgroundColor: "rgba(151, 155, 252, 0.90)",
         width: "100vw",
         height: "100vh",
         overflow: "scroll",
@@ -70,6 +88,7 @@ export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
     >
       <div
         style={{
+          position: "fixed",
           width: "100%",
           boxSizing: "border-box",
           display: "flex",
@@ -79,7 +98,7 @@ export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
       >
         <CloseRoundedIcon
           style={{
-            margin: "4rem",
+            margin: "3rem",
             marginLeft: "auto",
             cursor: "pointer",
             fontSize: "2.5rem",
@@ -118,11 +137,9 @@ export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
                 borderRadius: "3rem",
                 backgroundColor: "var(--purple4)",
               }}
-              onClick={() => {
-                // setIsOpen(false);
-              }}
+              onClick={patchData}
             >
-              재출
+              제출
             </Button>
           </div>
         </WhiteContainer>

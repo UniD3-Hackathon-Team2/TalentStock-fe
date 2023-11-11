@@ -49,6 +49,8 @@ function ProfileCompany() {
     });
   };
 
+  const [submitInfo, setSubmitInfo] = useState({});
+
   return (
     <Layout style={{ rowGap: "2rem" }}>
       <WhiteContainerEdit
@@ -56,6 +58,7 @@ function ProfileCompany() {
           <EditCompanyOne
             companyInfo={companyInfo}
             handleChange={handleChange}
+            setSubmitInfo={setSubmitInfo}
           />
         }
       >
@@ -127,6 +130,7 @@ function ProfileCompany() {
             handleChange={handleChange}
           />
         }
+        setSubmitInfo={setSubmitInfo}
       >
         <GridWrapper container>
           <GridElementWrapper item xs={full}>
