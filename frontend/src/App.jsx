@@ -12,9 +12,10 @@ export const context = createContext({});
 
 function App() {
   const [userState, SetUserState] = useState("logout");
+  const [userId, SetUserId] = useState("");
 
   return (
-    <context.Provider value={{ userState, SetUserState }}>
+    <context.Provider value={{ userState, SetUserState, userId, SetUserId }}>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />
