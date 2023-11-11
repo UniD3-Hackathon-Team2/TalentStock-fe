@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -9,7 +9,7 @@ import { context } from "../../App";
 const BASEURL = "http://43.202.86.217/api/v1/member";
 
 function Login() {
-  const { userState, SetUserState } = useContext(context);
+  const { userId, SetUserId, userType, setUserType } = useContext(context);
   const { register, handleSubmit } = useForm();
 
   const navigate = useNavigate();
@@ -28,8 +28,10 @@ function Login() {
           pw: password,
         },
       });
-      console.log(res.data);
+      console.log(res.data.result.memberId);
       if (res.data.isSuccess) {
+        setUserType(res.data.result.memberType);
+        SetUserId(res.data.result.memberId);
         navigate("/main");
       }
     } catch (error) {
