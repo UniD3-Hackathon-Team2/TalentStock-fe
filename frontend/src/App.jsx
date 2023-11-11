@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+import OfferStudent from "./pages/Offer/OfferStudent";
 import Layout from "./components/layout/Layout";
 import Main from "./pages/Main/Main";
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/offer-student" element={<OfferStudent />} />
         </Routes>
       </Router>
     </context.Provider>
