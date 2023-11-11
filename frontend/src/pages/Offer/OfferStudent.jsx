@@ -20,6 +20,7 @@ function OfferStudent() {
         <div className="offer_list_title">받은 오퍼</div>
         <div className="offer_list_table" style={{ width: "1000px" }}>
           <List
+            className="list"
             sx={{
               position: "relative",
               overflow: "auto",
@@ -130,12 +131,21 @@ function OfferStudent() {
                           secondary={row.position}
                         />
                       </Box>
-                      <Box sx={{alignItems: "center", justifyContent: "center" }}>
-                        <Box sx={{ flexDirection: "column"}}>
+                      <Box
+                        sx={{ alignItems: "center", justifyContent: "center" }}
+                      >
+                        <Box sx={{ flexDirection: "column" }}>
                           <Button
                             className="buttons"
                             variant="outlined"
-                            style={{ color: "#6A58D1", borderColor: "#6A58D1", fontSize: "18px", fontWeight: 600, margin: "5px", width: "200px"}}
+                            style={{
+                              color: "#6A58D1",
+                              borderColor: "#6A58D1",
+                              fontSize: "18px",
+                              fontWeight: 600,
+                              margin: "5px",
+                              width: "200px",
+                            }}
                           >
                             수락하기
                           </Button>
@@ -144,7 +154,14 @@ function OfferStudent() {
                           <Button
                             className="buttons"
                             variant="contained"
-                            style={{ backgroundColor: "#6A58D1", color: "white",  fontSize: "18px", fontWeight: 600, margin: "5px", width: "200px" }}
+                            style={{
+                              backgroundColor: "#6A58D1",
+                              color: "white",
+                              fontSize: "18px",
+                              fontWeight: 600,
+                              margin: "5px",
+                              width: "200px",
+                            }}
                           >
                             공고 상세보기
                           </Button>
