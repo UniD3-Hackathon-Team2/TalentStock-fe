@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { context } from "../../App";
+import axios from "axios";
 
 const NavLink = ({ style, link, name }) => {
   return (
@@ -28,10 +29,31 @@ const NavLink2 = ({ style, link, name }) => {
   return <NavLink link={link} name={name} style={{ padding: "0rem" }} />;
 };
 
+const BASEURL = "http://43.202.86.217/api/v1";
+
 export default function NavBar() {
   const { userId, SetUserId } = useContext(context);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { userType, SetUserType } = useContext(context);
+  const [userName, setUserName] = useState("사용자");
+
+  const GetUseInfo = async () => {
+    try {
+      const res = await axios({
+        url: `/member/${userId}`,
+        method: "get",
+        baseURL: BASEURL,
+      });
+
+      if (true) setUserName(res.data.result.name);
+    } catch (error) {
+      console.log("can't use user info system", error);
+    }
+  };
+
+  useEffect(() => {
+    GetUseInfo();
+  }, []);
   return (
     <div
       style={{
@@ -92,7 +114,7 @@ export default function NavBar() {
           className="whiteContainer"
         >
           <div>
-            안녕하세요, <b>{userId === 5 ? "김지수" : "회사21"}</b>
+            안녕하세요, <b>{userName}님</b>
           </div>
           <hr
             color="var(--purple5)"

@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Accordion2 } from "../../components/Accordion";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+
 import {
   GridElementWrapper,
   GridElementWrapperRight,
@@ -17,15 +19,19 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 
-export const EditCompanyOne = ({ datas, patchData }) => {
-  const [companyInfo, setCompanyInfo] = useState(datas);
+export const EditStudentOne = ({ datas, patchData }) => {
+  const [studentInfo, setStudentInfo] = useState(datas);
   const handleChange = ({ key, value }) => {
     console.log(key, value);
-    setCompanyInfo((prevCompanyInfo) => {
+    setStudentInfo((prevCompanyInfo) => {
       const updatedCompanyInfo = { ...prevCompanyInfo, [key]: value };
       return updatedCompanyInfo;
     });
   };
+
+  useEffect(() => {
+    console.log(studentInfo);
+  }, [studentInfo]);
 
   return (
     <React.Fragment>
@@ -51,37 +57,42 @@ export const EditCompanyOne = ({ datas, patchData }) => {
                 cursor: "pointer",
               }}
             >
-              <img
-                src="/logo.jpg"
-                style={{ width: "90%" }}
-                alt={`로고 이미지 - ${companyInfo.name}`}
+              <AccountCircleIcon
+                sx={{ fontSize: "180px", color: "var(--purple4)" }}
               />
             </div>
           </GridElementWrapper>
 
           <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>기업명</h4>
+            <h4 style={{ marginBottom: "-0.1rem" }}>이름</h4>
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
             <TextField
               id="outlined"
               variant="outlined"
-              value={companyInfo.name}
+              value={studentInfo.name}
               onChange={(e) =>
                 handleChange({ key: "name", value: e.target.value })
               }
             />
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>기업소개</h4>
+            <h4 style={{ marginBottom: "-0.1rem" }}>이메일</h4>
           </GridElementWrapper>
           <GridElementWrapper item xs={full}>
             <TextField
               id="outlined"
               variant="outlined"
-              value={companyInfo.explanation}
+              value={studentInfo.email}
               onChange={(e) =>
-                handleChange({ key: "explanation", value: e.target.value })
+                handleChange({ key: "email", value: e.target.value })
+              }
+              error={
+                !studentInfo.email
+                  .toLowerCase()
+                  .match(
+                    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                  )
               }
             />
           </GridElementWrapper>
@@ -94,7 +105,7 @@ export const EditCompanyOne = ({ datas, patchData }) => {
 
           <GridElementWrapper item xs={full}>
             <GridWrapper container>
-              {companyInfo.tagList.map((field, index) => (
+              {studentInfo.interestTagList.map((field, index) => (
                 <GridElementWrapper
                   key={index}
                   style={{
@@ -159,120 +170,7 @@ export const EditCompanyOne = ({ datas, patchData }) => {
               borderRadius: "3rem",
               backgroundColor: "var(--purple4)",
             }}
-            onClick={() => patchData(companyInfo)}
-          >
-            제출
-          </Button>
-        </div>
-      </WhiteContainer>
-    </React.Fragment>
-  );
-};
-
-export const EditCompanyTwo = ({ datas, patchData }) => {
-  const [companyInfo, setCompanyInfo] = useState(datas);
-  const handleChange = ({ key, value }) => {
-    console.log(key, value);
-    setCompanyInfo((prevCompanyInfo) => {
-      const updatedCompanyInfo = { ...prevCompanyInfo, [key]: value };
-      return updatedCompanyInfo;
-    });
-  };
-  return (
-    <React.Fragment>
-      <WhiteContainer>
-        <GridWrapper container>
-          <GridElementWrapper item xs={full}>
-            <h3>공고</h3>
-          </GridElementWrapper>
-          <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>공고명</h4>
-          </GridElementWrapper>
-          <GridElementWrapper item xs={full}>
-            <TextField
-              id="outlined"
-              variant="outlined"
-              value={companyInfo.position}
-              onChange={(e) =>
-                handleChange({ key: "position", value: e.target.value })
-              }
-            />
-          </GridElementWrapper>
-
-          <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>직무 설명</h4>
-          </GridElementWrapper>
-          <GridElementWrapper item xs={full}>
-            <TextField
-              id="outlined"
-              variant="outlined"
-              value={companyInfo.positionExplanation}
-              onChange={(e) =>
-                handleChange({
-                  key: "positionExplanation",
-                  value: e.target.value,
-                })
-              }
-            />
-          </GridElementWrapper>
-
-          <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>졸업 후 필수 근무 기간</h4>
-          </GridElementWrapper>
-          <GridElementWrapper item xs={full}>
-            <TextField
-              id="outlined"
-              variant="outlined"
-              value={companyInfo.mustWorkingYear}
-              onChange={(e) =>
-                handleChange({
-                  key: "mustWorkingYear",
-                  value: e.target.value,
-                })
-              }
-            />
-          </GridElementWrapper>
-          <GridElementWrapper item xs={full}>
-            <h4 style={{ marginBottom: "-0.1rem" }}>
-              방학 기간 내 의무 근로 여부
-            </h4>
-          </GridElementWrapper>
-          <GridElementWrapper item xs={0}>
-            <Checkbox
-              id="outlined"
-              variant="outlined"
-              checked={companyInfo.isCompulsoryWork}
-              onChange={(e) =>
-                handleChange({
-                  key: "isCompulsoryWork",
-                  value: !companyInfo.isCompulsoryWork,
-                })
-              }
-            />
-          </GridElementWrapper>
-          <GridElementWrapper item xs>
-            의무 근무 필수
-          </GridElementWrapper>
-        </GridWrapper>
-        <div
-          style={{
-            bottom: "0",
-            width: "100%",
-            boxSizing: "border-box",
-            display: "flex",
-            justifyContent: "flex-end",
-          }}
-        >
-          <Button
-            variant="contained"
-            style={{
-              marginLeft: "auto",
-              padding: "0.7rem 3rem",
-              cursor: "pointer",
-              borderRadius: "3rem",
-              backgroundColor: "var(--purple4)",
-            }}
-            onClick={() => patchData(companyInfo)}
+            onClick={() => patchData(studentInfo)}
           >
             제출
           </Button>

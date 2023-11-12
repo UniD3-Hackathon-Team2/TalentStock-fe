@@ -11,6 +11,7 @@ export default function LoginLayout({ children }) {
     >
       <div
         style={{
+          background: "linear-gradient(251deg, #8A6AE3 7.73%, #3338B3 100%)",
           flex: "1",
           display: "flex",
           alignItems: "flex-start",

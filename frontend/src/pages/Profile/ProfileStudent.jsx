@@ -1,5 +1,5 @@
 import Layout from "../../components/layout/Layout";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Accordion } from "../../components/Accordion";
 import {
@@ -7,12 +7,16 @@ import {
   GridElementWrapperRight,
   GridWrapper,
   WhiteContainer,
+  WhiteContainerEdit,
   full,
   left,
   right,
 } from "../../components/Profile/Layout";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { EditStudentOne } from "../../components/Profile/EditStudent";
+
+import { context } from "../../App";
 
 const BASEURL = "http://43.202.86.217/api/v1";
 
@@ -40,6 +44,32 @@ export default function ProfileStudent() {
     GetUseInfo();
   }, []);
 
+  const { userId, userType } = useContext(context);
+
+  const patchData = async (otherData) => {
+    // const data = { memberType: userType.toUpperCase(), ...otherData };
+    console.log("otherData", otherData);
+    const data = {
+      memberType: userType.toUpperCase(),
+      email: otherData["email"],
+    };
+    try {
+      const response = await axios.patch(
+        `http://43.202.86.217/api/v1/member/${userId}`,
+        data,
+        {
+          headers: {
+            Authorization: userId,
+          },
+        }
+      );
+      console.log("response", response.data);
+      setStudentInfo({ memberType: userType.toUpperCase(), ...otherData });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     console.log(studentInfo);
   }, [studentInfo]);
@@ -48,7 +78,11 @@ export default function ProfileStudent() {
     <Layout style={{ rowGap: "2rem" }}>
       {studentInfo !== null && (
         <>
-          <WhiteContainer>
+          <WhiteContainerEdit
+            overlayChildren={
+              <EditStudentOne datas={studentInfo} patchData={patchData} />
+            }
+          >
             <GridWrapper container>
               <GridElementWrapper
                 item
@@ -159,9 +193,9 @@ export default function ProfileStudent() {
                 </GridWrapper>
               </GridElementWrapper>
             </GridWrapper> */}
-          </WhiteContainer>
+          </WhiteContainerEdit>
 
-          <WhiteContainer>
+          <WhiteContainerEdit>
             <GridWrapper container>
               <GridElementWrapper item xs={full}>
                 <h3>수상 경력</h3>
@@ -239,9 +273,9 @@ export default function ProfileStudent() {
                 </GridWrapper>
               </GridElementWrapper>
             </GridWrapper>
-          </WhiteContainer>
+          </WhiteContainerEdit>
 
-          <WhiteContainer>
+          <WhiteContainerEdit>
             <GridWrapper container>
               <GridElementWrapper item xs={full}>
                 <h3>어학 능력</h3>
@@ -301,9 +335,9 @@ export default function ProfileStudent() {
                 </GridWrapper>
               </GridElementWrapper>
             </GridWrapper>
-          </WhiteContainer>
+          </WhiteContainerEdit>
 
-          <WhiteContainer>
+          <WhiteContainerEdit>
             <GridWrapper>
               <GridElementWrapper item xs={full}>
                 <h3>자기소개서</h3>
@@ -316,7 +350,7 @@ export default function ProfileStudent() {
                 {studentInfo.introduce}
               </GridElementWrapper>
             </GridWrapper>
-          </WhiteContainer>
+          </WhiteContainerEdit>
         </>
       )}
     </Layout>

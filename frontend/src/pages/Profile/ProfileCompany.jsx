@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+
+import { context } from "../../App";
 
 import "./ProfileCompany.css";
 import Layout from "../../components/layout/Layout";
@@ -70,16 +72,31 @@ function ProfileCompany() {
     GetUseInfo();
   }, []);
 
+  const { userId, userType } = useContext(context);
+  const patchData = async (otherData) => {
+    const data = { memberType: userType.toUpperCase(), ...otherData };
+    console.log(userId, data, "hihihi");
+    try {
+      const response = await axios.patch(
+        `http://43.202.86.217/api/v1/member/${userId}`,
+        data,
+        {
+          headers: {
+            Authorization: userId,
+          },
+        }
+      );
+      console.log(response.data);
+      SetDatas(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Layout style={{ rowGap: "2rem" }}>
       <WhiteContainerEdit
-        overlayChildren={
-          <EditCompanyOne
-            companyInfo={datas}
-            handleChange={handleChange}
-            setSubmitInfo={setSubmitInfo}
-          />
-        }
+        overlayChildren={<EditCompanyOne datas={datas} patchData={patchData} />}
       >
         <GridWrapper container>
           <GridElementWrapper item xs={left}>
@@ -148,10 +165,7 @@ function ProfileCompany() {
         )}
       </WhiteContainerEdit>
       <WhiteContainerEdit
-        overlayChildren={
-          <EditCompanyTwo companyInfo={datas} handleChange={handleChange} />
-        }
-        setSubmitInfo={setSubmitInfo}
+        overlayChildren={<EditCompanyTwo datas={datas} patchData={patchData} />}
       >
         <GridWrapper container>
           <GridElementWrapper item xs={full}>

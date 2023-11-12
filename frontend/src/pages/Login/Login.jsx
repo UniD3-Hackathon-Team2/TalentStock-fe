@@ -31,6 +31,7 @@ function Login() {
       });
       console.log(res.data.result.memberId);
       if (res.data.isSuccess) {
+        console.log(res.data.result.memberType.toLowerCase());
         setUserType(res.data.result.memberType.toLowerCase());
         SetUserId(res.data.result.memberId);
         navigate("/main");
@@ -47,7 +48,7 @@ function Login() {
         className="loginoutForm"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1>로그인</h1>
+        <h1 style={{ fontSize: "2rem" }}>로그인</h1>
         <div
           style={{
             display: "flex",
@@ -56,7 +57,7 @@ function Login() {
             marginBottom: "-2rem",
           }}
         >
-          <h3 className="label">이메일</h3>
+          <h4 className="label">이메일</h4>
         </div>
         <input
           className="submitInput"
@@ -73,7 +74,7 @@ function Login() {
             marginBottom: "-2rem",
           }}
         >
-          <h3 className="label">비밀번호</h3>
+          <h4 className="label">비밀번호</h4>
         </div>
         <input
           className="submitInput"
