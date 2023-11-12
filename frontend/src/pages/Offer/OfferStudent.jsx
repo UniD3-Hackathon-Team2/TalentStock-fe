@@ -77,7 +77,7 @@ function OfferStudent() {
     //   }
     // };
     // fetchData();
-    navigate(`/profile/${companyId}`);
+    navigate(`/profile-company/${companyId}`);
   };
   
   return (

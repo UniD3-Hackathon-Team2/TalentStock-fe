@@ -23,7 +23,7 @@ function OfferCompany() {
   const navigate = useNavigate();
   
   const handleStudent = (memberId) => {
-    navigate(`/profile/${memberId}`);
+    navigate(`/profile-student/${memberId}`);
   }
 
   
