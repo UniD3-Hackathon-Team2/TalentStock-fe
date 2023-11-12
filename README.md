@@ -2,7 +2,7 @@
 
 > - 장학금이 필요한 대학생들을 위한, 더 나아가 우리 사회의 미래를 위한 서비스 ‘Talent Save’입니다.
 
-<img src="https://github.com/hyunseo-k/Algorithm/assets/79782180/fd14a3ac-0372-45f3-a139-96adb552c511" />
+<img src="https://github.com/hyunseo-k/Algorithm/assets/79782180/fd14a3ac-0372-45f3-a139-96adb552c511" width="500" />
 
 Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 세 가지로 나뉩니다.
 대학생은 본인의 미래 계획과 포트폴리오를 올려 기업과 개인 투자자에게 자신을 어필할 수 있으며 이들에게 학자금 혹은 학업 보조금을 지원받을 수 있습니다.
@@ -15,7 +15,7 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c6ff3d66-2da9-44d2-ace2-a3b4bfc8bf17" width="800"/>
 
 ## Architecture
-![아키텍처](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c412e103-ec0f-4b67-9c91-c80bd30323af)
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c412e103-ec0f-4b67-9c91-c80bd30323af" width="800" />
 
 ## Stack
 <div align=left> 
