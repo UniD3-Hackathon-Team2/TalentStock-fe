@@ -31,7 +31,7 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 <img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
 <br/>
 
-
+## Team
 |Teammates|University|github|Part|
 |------|---|---|---|
 |Jisoo Oh|SMWU|[hyunseo-k](http://github.com/hyunseo-k)|Backend
