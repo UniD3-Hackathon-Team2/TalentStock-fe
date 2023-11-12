@@ -92,7 +92,7 @@ export default function NavBar() {
           className="whiteContainer"
         >
           <div>
-            안녕하세요, <b>사용자님</b>
+            안녕하세요, <b>{userId === 5 ? "김지수" : "회사21"}</b>
           </div>
           <hr
             color="var(--purple5)"

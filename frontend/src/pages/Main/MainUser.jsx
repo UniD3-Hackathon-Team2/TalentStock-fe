@@ -23,9 +23,13 @@ function MainUser({ recommendedStudent }) {
         console.log(recommendedStudent.memberId);
         navigate(`/profile/${recommendedStudent.memberId}`);
       }}
+      style={{ display: "flex" }}
     >
       <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
-      <div className="infoDiv">
+      <div
+        className="infoDiv"
+        style={{ display: "flex", flexDirection: "column", rowGap: "0.2rem" }}
+      >
         <div className="firstLine">
           <span className="name">{recommendedStudent.name}</span>
           {userType !== "student" ? (
@@ -59,8 +63,13 @@ function MainUser({ recommendedStudent }) {
             </button>
           ) : null}
         </div>
-
-        <div class="line"></div>
+        <hr
+          color="#BBB"
+          style={{
+            width: "100%",
+            margin: "-0.4rem 0rem",
+          }}
+        />
         <span className="info sub">{`${recommendedStudent.university} ${recommendedStudent.department} ${recommendedStudent.grade}학년`}</span>
         <span className="info">{recommendedStudent.shortIntroduce}</span>
         <div className="interests">{recommendedStudent.interest}</div>
