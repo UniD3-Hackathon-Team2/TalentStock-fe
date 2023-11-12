@@ -1,80 +1,35 @@
-# TalentStock-fe
+# TalentStock
 
-# 프로젝트명
-> 간략한 프로젝트 소개 문구를 작성합니다.
+> - 장학금이 필요한 대학생들을 위한, 더 나아가 우리 사회의 미래를 위한 서비스 ‘Talent Save’입니다.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
+<img src="https://github.com/hyunseo-k/Algorithm/assets/79782180/fd14a3ac-0372-45f3-a139-96adb552c511" />
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
+Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 세 가지로 나뉩니다.
+대학생은 본인의 미래 계획과 포트폴리오를 올려 기업과 개인 투자자에게 자신을 어필할 수 있으며 이들에게 학자금 혹은 학업 보조금을 지원받을 수 있습니다.
 
-![](../header.png)
+기업은 대학생에게 취업 기회와 학자금을 제공하며, 대신 학생들과 계약을 통해 기업이 원하는 인재상의 학생을 졸업과 동시에 채용할 수 있습니다.
 
-## 설치 방법
 
-OS X & 리눅스:
+## Screenshots
+![Screenshot 2023-11-12 at 3 40 15 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/e8e7d1ec-6502-4943-9085-cc55c49f88d1)
+![Screenshot 2023-11-12 at 3 40 00 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c6ff3d66-2da9-44d2-ace2-a3b4bfc8bf17)
 
-```sh
-npm install my-crazy-module --save
-```
+## Architecture
+![아키텍처](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c412e103-ec0f-4b67-9c91-c80bd30323af)
 
-윈도우:
+## Stack
+<div align=left> 
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
+<br/>
 
-```sh
-edit autoexec.bat
-```
 
-## 사용 예제
-
-스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
-
-_더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
-
-## 개발 환경 설정
-
-모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
-
-```sh
-make install
-npm test
-```
-
-## 업데이트 내역
-
-* 0.2.1
-    * 수정: 문서 업데이트 (모듈 코드 동일)
-* 0.2.0
-    * 수정: `setDefaultXYZ()` 메서드 제거
-    * 추가: `init()` 메서드 추가
-* 0.1.1
-    * 버그 수정: `baz()` 메서드 호출 시 부팅되지 않는 현상 (@컨트리뷰터 감사합니다!)
-* 0.1.0
-    * 첫 출시
-    * 수정: `foo()` 메서드 네이밍을 `bar()`로 수정
-* 0.0.1
-    * 작업 진행 중
-
-## 정보
-
-이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
-
-XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할 수 있습니다.
-
-[https://github.com/yourname/github-link](https://github.com/dbader/)
-
-## 기여 방법
-
-1. (<https://github.com/yourname/yourproject/fork>)을 포크합니다.
-2. (`git checkout -b feature/fooBar`) 명령어로 새 브랜치를 만드세요.
-3. (`git commit -am 'Add some fooBar'`) 명령어로 커밋하세요.
-4. (`git push origin feature/fooBar`) 명령어로 브랜치에 푸시하세요. 
-5. 풀리퀘스트를 보내주세요.
-
-<!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/datadog-metrics.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/datadog-metrics
-[npm-downloads]: https://img.shields.io/npm/dm/datadog-metrics.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
-[travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
-[wiki]: https://github.com/yourname/yourproject/wiki
+|Teammates|University|github|
+|------|---|---|
+|Jisoo Oh|SMWU|[hyunseo-k](http://github.com/hyunseo-k)|Backend
+|Sangje Jung|CAU|[hyunseo-k](http://github.com/hyunseo-k)|Backend
+|Minkyu Kang|CAU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
+|Hyunseo Kang|SKKU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
+|Yushick Moon|SKKU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
+|Hyuna Kim|KAIST|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
