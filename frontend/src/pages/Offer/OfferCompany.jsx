@@ -1,13 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListSubheader from "@mui/material/ListSubheader";
 import Box from "@mui/material/Box";
-import { offers_company } from "./offers_company";
+// import { offers_company } from "./offers_company";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import axios from "axios";
 
 import "./OfferCompany.css";
 import Layout from "../../components/layout/Layout";
@@ -15,9 +16,36 @@ import Layout from "../../components/layout/Layout";
 import { context } from "../../App";
 
 function OfferCompany() {
-  const [data, setData] = useState(offers_company);
+  // const [data, setData] = useState(offers_company);
   const {userType, SetUserType} = useContext(context);
+  const { userId, SetUserId } = useContext(context);
+  const [offers_company, setOffers_company] = useState([]);
+  const navigate = useNavigate();
+  
+  const handleStudent = (memberId) => {
+    navigate(`/profile-student/${memberId}`);
+  }
 
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("fetching data");
+        const url = `http://43.202.86.217/api/v1/offer/company/${userId}`; // companyId를 사용하여 url 구성
+        const response = await axios.get(url);
+        // console.log(response.data.result);
+        if (response.data.isSuccess) {
+          console.log(response.data.result);
+          setOffers_company(response.data.result.offerList);
+
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <Layout>
       <div className="offer_list_container">
@@ -68,7 +96,7 @@ function OfferCompany() {
                           marginLeft: 70,
                         }}
                       >
-                        {row.success}
+                        {row.granted ? "수락 완료" : "수락대기중"}
                       </Typography>
                       <Box
                         sx={{
@@ -89,7 +117,7 @@ function OfferCompany() {
                               display: "inline-block",
                             }}
                           >
-                            {row.name}
+                            {row.memberName}
                           </Typography>
                           <Typography
                             style={{
@@ -116,7 +144,7 @@ function OfferCompany() {
                               관심 분야
                             </Typography>
                           }
-                          secondary={row.interest}
+                          secondary={row.interestedIn}
                         />
                         <ListItemText
                           primary={
@@ -132,7 +160,7 @@ function OfferCompany() {
                               학력
                             </Typography>
                           }
-                          secondary={row.school}
+                          secondary={row.memberUniversity}
                         />
                       </Box>
                       <Box sx={{ flexDirection: "column", width: "200px" }}>
@@ -146,7 +174,9 @@ function OfferCompany() {
                             fontSize: 18,
                             fontWeight: 700,
                             margin: "5px",
+                            borderRadius: "10px"
                           }}
+                          onClick={() => handleStudent(row.memberId)}
                         >
                           학생 상세보기
                         </Button>
