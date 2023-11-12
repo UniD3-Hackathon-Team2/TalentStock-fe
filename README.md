@@ -11,8 +11,8 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 
 
 ## Screenshots
-![Screenshot 2023-11-12 at 3 40 15 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/e8e7d1ec-6502-4943-9085-cc55c49f88d1)
-![Screenshot 2023-11-12 at 3 40 00 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c6ff3d66-2da9-44d2-ace2-a3b4bfc8bf17)
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/e8e7d1ec-6502-4943-9085-cc55c49f88d1" width="800" />
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c6ff3d66-2da9-44d2-ace2-a3b4bfc8bf17" width="800"/>
 
 ## Architecture
 ![아키텍처](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/c412e103-ec0f-4b67-9c91-c80bd30323af)
