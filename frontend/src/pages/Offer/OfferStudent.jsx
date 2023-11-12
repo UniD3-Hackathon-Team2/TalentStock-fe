@@ -14,13 +14,43 @@ import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
 import { context } from "../../App";
 
-const BASEURL = "http://43.202.86.217/api/v1/offer?";
+
+// const BASEURL = "http://43.202.86.217/api/v1/offer?";
+
+
 
 function OfferStudent() {
   const { userType, setUserType } = useContext(context);
   const { userId, SetUserId } = useContext(context);
   const [offerType, SetOfferType] = useState("JOB");
   const [offers, setOffers] = useState([]);
+  // const [memberId, setMemberId] = useState(21);
+  const BASEURL = "http://43.202.86.217/api/v1/offer?offerType=JOB";
+  // const BASEURL2 = `http://43.202.86.217/api/v1/member/${memberId}`;
+  console.log(userId)
+  const navigate = useNavigate();
+
+  const handleGrant = (offerId) => {
+    const url = `http://43.202.86.217/api/v1/offer/${offerId}`; // offerId를 사용하여 URL 구성
+    // console.log(userId)
+    const headers = {
+      'Authorization': userId,
+    };
+  
+    axios.patch(url, {}, { headers }) // 빈 데이터 객체를 전달하고, 세 번째 인자로 headers 객체를 전달
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.isSuccess) {
+          navigate(`/offer/${userId}`);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  
+  
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,26 +58,15 @@ function OfferStudent() {
         console.log("fetching data");
         const response = await axios.get(BASEURL, {
           headers: {
-            authorization: "3", // 여기에 헤더 값 설정
+            authorization: userId, // 여기에 헤더 값 설정
           },
-          params: {
-            offerType: "JOB", // 여기에 URL 쿼리 매개변수 설정
-          },
+          
         });
-        // console.log(offerType)
-        // console.log(response.data.isSuccess);
+
         if (response.data.isSuccess) {
-          // console.log("yes")
           console.log(response.data.result.companyOfferDtoList);
-          // t = response.data.result.companyOfferDtoList
-          // console.log(t)
+
           setOffers(response.data.result.companyOfferDtoList);
-          // console.log(t);
-          // setOffers(t => {
-          //   console.log(t)
-          //   return t
-          // })
-          // console.log(offers);
         }
         // 응답 데이터 처리
       } catch (error) {
@@ -59,13 +78,25 @@ function OfferStudent() {
     fetchData();
   }, []);
 
-  const handleCompany = (data) => {
-    // console.log(userId)
-    // console.log(data.userId)
-    // console.log(data.id);
-    // SetUserType("company")
-    // Navigate(`/profile/${data.id}`)
+  const handleCompany = (companyId) => {
+
+    // const fetchData = async () => {
+    //   try {
+    //     console.log("fetching data");
+    //     const url = `http://43.202.86.217/api/v1/member/${companyId}`; // companyId를 사용하여 url 구성
+    //     const response = await axios.get(url);
+    //     // console.log(response.data.result);
+    //     if (response.data.isSuccess) {
+    //       console.log(response.data.result);
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // fetchData();
+    navigate(`/profile/${companyId}`);
   };
+  
   return (
     <Layout>
       <div className="offer_list_container">
@@ -102,7 +133,7 @@ function OfferStudent() {
                         alignItems: "center",
                         padding: "16px",
                         border: "1px solid #E0E0E0",
-                        borderRadius: "15px",
+                        borderRadius: "30px",
                         marginBottom: "8px",
                       }}
                     >
@@ -197,7 +228,9 @@ function OfferStudent() {
                               fontWeight: 600,
                               margin: "5px",
                               width: "200px",
+                              borderRadius:10,
                             }}
+                            onClick={() => handleGrant(row.offerId)}
                           >
                             수락하기
                           </Button>
@@ -213,8 +246,9 @@ function OfferStudent() {
                               fontWeight: 600,
                               margin: "5px",
                               width: "200px",
+                              borderRadius:10,
                             }}
-                            onClick={handleCompany}
+                            onClick={() => handleCompany(row.companyId)}
                           >
                             공고 상세보기
                           </Button>
