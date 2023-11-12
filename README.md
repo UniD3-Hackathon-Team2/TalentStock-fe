@@ -1,6 +1,8 @@
 # TalentSave
 <img src="https://github.com/hyunseo-k/Algorithm/assets/79782180/fd14a3ac-0372-45f3-a139-96adb552c511" width="400" />
 
+<br />
+
 장학금이 필요한 대학생들을 위한, 더 나아가 우리 사회의 미래를 위한 서비스 ‘Talent Save’입니다.
 
 Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 세 가지로 나뉩니다.
