@@ -31,6 +31,7 @@ function Login() {
       });
       console.log(res.data.result.memberId);
       if (res.data.isSuccess) {
+        console.log(res.data.result.memberType.toLowerCase());
         setUserType(res.data.result.memberType.toLowerCase());
         SetUserId(res.data.result.memberId);
         navigate("/main");
@@ -47,38 +48,52 @@ function Login() {
         className="loginoutForm"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1>로그인</h1>
-        <div style={{ display: "flex" }}>
-          <h3 className="label">이메일</h3>
-          <input
-            className="idInput"
-            type="text"
-            {...register("id")}
-            style={{
-              padding: "0.5rem",
-              marginLeft: "1rem",
-              borderRadius: "2rem",
-              width: "260px",
-            }}
-          />
+        <h1 style={{ fontSize: "2rem" }}>로그인</h1>
+        <div
+          style={{
+            display: "flex",
+            width: "300px",
+            justifyContent: "flex-start",
+            marginBottom: "-2rem",
+          }}
+        >
+          <h4 className="label">이메일</h4>
         </div>
-        <div style={{ display: "flex" }}>
-          <h3 className="label">비밀번호</h3>
-          <input
-            className="passwordInput"
-            type="password"
-            {...register("password")}
-            style={{
-              padding: "0.5rem",
-              marginLeft: "1rem",
-              borderRadius: "2rem",
-              width: "260px",
-            }}
-          />
+        <input
+          className="submitInput"
+          type="text"
+          {...register("id")}
+          style={{ background: "white" }}
+        />
+        {/* </div> */}
+        <div
+          style={{
+            display: "flex",
+            width: "300px",
+            justifyContent: "flex-start",
+            marginBottom: "-2rem",
+          }}
+        >
+          <h4 className="label">비밀번호</h4>
         </div>
-
-        <button className="button">이메일 비밀번호 찾기</button>
-        <button className="button">회원가입</button>
+        <input
+          className="submitInput"
+          type="password"
+          {...register("password")}
+          style={{ background: "white" }}
+        />
+        {/* </div> */}
+        <div
+          style={{
+            display: "flex",
+            columnGap: "1rem",
+            marginBottom: "2rem",
+            marginTop: "2rem",
+          }}
+        >
+          <button className="button">이메일 비밀번호 찾기</button>
+          <button className="button">회원가입</button>
+        </div>
         <input className="submitInput" type="submit" value="다음" />
       </form>
     </LoginLayout>

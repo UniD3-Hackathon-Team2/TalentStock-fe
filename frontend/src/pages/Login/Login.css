@@ -23,22 +23,8 @@
   justify-content: space-between;
 }
 
-.loginoutFormDiv .idInput,
-.loginoutFormDiv .passwordInput {
-  position: relative;
-
-  width: 98%;
-  height: 40px;
-
-  border-radius: 15px;
-  border: 2px solid rgba(61, 67, 208, 0.5);
-
-  background: #fff;
-}
-
 .button {
   border-radius: 2rem;
-  width: 300px;
   background: none;
   border: none;
   color: white;
@@ -46,6 +32,8 @@
 .submitInput {
   padding: 1rem;
   border-radius: 2rem;
+  border: none;
   width: 300px;
   background: #979bfc;
+  cursor: pointer;
 }

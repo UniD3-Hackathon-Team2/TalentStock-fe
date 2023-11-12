@@ -2,13 +2,8 @@ import { styled } from "@mui/system";
 import Grid from "@mui/material/Grid";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-import Button from "@mui/material/Button";
 import React, { useContext, useState } from "react";
 import EditRoundedIcon from "@mui/icons-material/EditRounded";
-
-import axios from "axios";
-
-import { context } from "../../App";
 
 export const WhiteContainer = styled("div")({
   backgroundColor: "var(--white)",
@@ -19,7 +14,7 @@ export const WhiteContainer = styled("div")({
   width: "100%",
 });
 
-export const WhiteContainerEdit = ({ children, overlayChildren }) => {
+export const WhiteContainerEdit = ({ children, overlayChildren, isSelf }) => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   return (
@@ -35,20 +30,22 @@ export const WhiteContainerEdit = ({ children, overlayChildren }) => {
             boxSizing: "border-box",
             display: "flex",
             justifyContent: "flex-end",
-            marginBottom: "-2.2rem",
             cursor: "pointer",
             zIndex: "100",
           }}
         >
-          <EditRoundedIcon
-            style={{
-              marginTop: "0.5rem",
-              marginLeft: "auto",
-            }}
-            onClick={() => {
-              setIsOverlayOpen(true);
-            }}
-          />
+          {isSelf && (
+            <EditRoundedIcon
+              style={{
+                position: "absolute",
+                marginTop: "0.5rem",
+                marginLeft: "auto",
+              }}
+              onClick={() => {
+                setIsOverlayOpen(true);
+              }}
+            />
+          )}
         </div>
         {children}
       </WhiteContainer>
@@ -56,25 +53,6 @@ export const WhiteContainerEdit = ({ children, overlayChildren }) => {
   );
 };
 export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
-  const { userId, userType } = useContext(context);
-  const patchData = async () => {
-    const data = { memberType: userType.toUpperCase(), email: "hi" };
-    console.log(userId, "hihihi");
-    try {
-      const response = await axios.patch(
-        `http://43.202.86.217/api/v1/member/${userId}`,
-        data,
-        {
-          headers: {
-            Authorization: userId,
-          },
-        }
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div
       style={{
@@ -122,32 +100,7 @@ export const WhiteContainerOverlay = ({ children, setIsOverlayOpen }) => {
           flexDirection: "column",
         }}
       >
-        <WhiteContainer>
-          {children}
-          <div
-            style={{
-              bottom: "0",
-              width: "100%",
-              boxSizing: "border-box",
-              display: "flex",
-              justifyContent: "flex-end",
-            }}
-          >
-            <Button
-              variant="contained"
-              style={{
-                marginLeft: "auto",
-                padding: "0.7rem 3rem",
-                cursor: "pointer",
-                borderRadius: "3rem",
-                backgroundColor: "var(--purple4)",
-              }}
-              onClick={patchData}
-            >
-              제출
-            </Button>
-          </div>
-        </WhiteContainer>
+        {children}
       </div>
     </div>
   );
