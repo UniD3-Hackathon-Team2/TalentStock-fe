@@ -9,6 +9,7 @@ export default function Layout({ children, style }) {
         style={{
           background: "linear-gradient(251deg, #8A6AE3 7.73%, #3338B3 100%)",
           minHeight: "100vh",
+          width: "100vw",
           display: "flex",
           justifyContent: "center",
         }}

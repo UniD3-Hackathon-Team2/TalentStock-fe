@@ -14,7 +14,7 @@ export const WhiteContainer = styled("div")({
   width: "100%",
 });
 
-export const WhiteContainerEdit = ({ children, overlayChildren }) => {
+export const WhiteContainerEdit = ({ children, overlayChildren, isSelf }) => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
   return (
@@ -30,20 +30,22 @@ export const WhiteContainerEdit = ({ children, overlayChildren }) => {
             boxSizing: "border-box",
             display: "flex",
             justifyContent: "flex-end",
-            marginBottom: "-2.2rem",
             cursor: "pointer",
             zIndex: "100",
           }}
         >
-          <EditRoundedIcon
-            style={{
-              marginTop: "0.5rem",
-              marginLeft: "auto",
-            }}
-            onClick={() => {
-              setIsOverlayOpen(true);
-            }}
-          />
+          {isSelf && (
+            <EditRoundedIcon
+              style={{
+                position: "absolute",
+                marginTop: "0.5rem",
+                marginLeft: "auto",
+              }}
+              onClick={() => {
+                setIsOverlayOpen(true);
+              }}
+            />
+          )}
         </div>
         {children}
       </WhiteContainer>

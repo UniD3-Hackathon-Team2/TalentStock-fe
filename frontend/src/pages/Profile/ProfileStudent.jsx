@@ -79,6 +79,7 @@ export default function ProfileStudent() {
       {studentInfo !== null && (
         <>
           <WhiteContainerEdit
+            isSelf={userId.toString() === id}
             overlayChildren={
               <EditStudentOne datas={studentInfo} patchData={patchData} />
             }
@@ -119,6 +120,18 @@ export default function ProfileStudent() {
 
               <GridElementWrapper item xs={full}>
                 <GridWrapper container>
+                  <GridElementWrapper
+                    style={{
+                      margin: "0rem 1rem 1rem 0rem",
+                      padding: "0.8rem 2rem",
+                      backgroundColor: "var(--purple2)",
+                      color: "var(--white)",
+                      borderRadius: "2rem",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    # uni-Dthon
+                  </GridElementWrapper>
                   {studentInfo.interestTagList.map((field, index) => (
                     <GridElementWrapper
                       key={index}
@@ -195,7 +208,7 @@ export default function ProfileStudent() {
             </GridWrapper> */}
           </WhiteContainerEdit>
 
-          <WhiteContainerEdit>
+          <WhiteContainerEdit isSelf={userId.toString() === id}>
             <GridWrapper container>
               <GridElementWrapper item xs={full}>
                 <h3>수상 경력</h3>
@@ -275,7 +288,7 @@ export default function ProfileStudent() {
             </GridWrapper>
           </WhiteContainerEdit>
 
-          <WhiteContainerEdit>
+          <WhiteContainerEdit isSelf={userId.toString() === id}>
             <GridWrapper container>
               <GridElementWrapper item xs={full}>
                 <h3>어학 능력</h3>
@@ -337,7 +350,7 @@ export default function ProfileStudent() {
             </GridWrapper>
           </WhiteContainerEdit>
 
-          <WhiteContainerEdit>
+          <WhiteContainerEdit isSelf={userId.toString() === id}>
             <GridWrapper>
               <GridElementWrapper item xs={full}>
                 <h3>자기소개서</h3>

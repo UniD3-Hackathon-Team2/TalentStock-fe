@@ -14,9 +14,8 @@ import "./OfferStudent.css";
 import Layout from "../../components/layout/Layout";
 import { context } from "../../App";
 
-
-
-function OfferStudentOne({row}){
+function OfferStudentOne({ row }) {
+  const navigate = useNavigate();
 
   const { userId, SetUserId } = useContext(context);
 
@@ -26,24 +25,24 @@ function OfferStudentOne({row}){
     const url = `http://43.202.86.217/api/v1/offer/${offerId}`; // offerId를 사용하여 URL 구성
     // console.log(userId)
     const headers = {
-      'Authorization': userId,
+      Authorization: userId,
     };
-  
-    axios.patch(url, {}, { headers }) // 빈 데이터 객체를 전달하고, 세 번째 인자로 headers 객체를 전달
+
+    axios
+      .patch(url, {}, { headers }) // 빈 데이터 객체를 전달하고, 세 번째 인자로 headers 객체를 전달
       .then((response) => {
         console.log(response.data);
         if (response.data.isSuccess) {
           // navigate(`/offer/${userId}`);
-          SetTnfkrState(true)
+          SetTnfkrState(true);
         }
       })
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   const handleCompany = (companyId) => {
-
     // const fetchData = async () => {
     //   try {
     //     console.log("fetching data");
@@ -58,10 +57,10 @@ function OfferStudentOne({row}){
     //   }
     // };
     // fetchData();
-    navigate(`/profile/${companyId}`);
+    navigate(`/profile-company/${companyId}`);
   };
 
-  return(
+  return (
     <li key={`section-${row.name}`}>
       <ul>
         <ListSubheader
@@ -163,9 +162,7 @@ function OfferStudentOne({row}){
                 secondary={row.position}
               />
             </Box>
-            <Box
-              sx={{ alignItems: "center", justifyContent: "center" }}
-            >
+            <Box sx={{ alignItems: "center", justifyContent: "center" }}>
               <Box sx={{ flexDirection: "column" }}>
                 <Button
                   className="buttons"
@@ -177,7 +174,7 @@ function OfferStudentOne({row}){
                     fontWeight: 600,
                     margin: "5px",
                     width: "200px",
-                    borderRadius:10,
+                    borderRadius: 10,
                   }}
                   onClick={() => handleGrant(row.offerId)}
                 >
@@ -195,7 +192,7 @@ function OfferStudentOne({row}){
                     fontWeight: 600,
                     margin: "5px",
                     width: "200px",
-                    borderRadius:10,
+                    borderRadius: 10,
                   }}
                   onClick={() => handleCompany(row.companyId)}
                 >
@@ -206,7 +203,8 @@ function OfferStudentOne({row}){
           </Box>
         </ListItem>
       </ul>
-    </li>)
+    </li>
+  );
 }
 
 export default OfferStudentOne;

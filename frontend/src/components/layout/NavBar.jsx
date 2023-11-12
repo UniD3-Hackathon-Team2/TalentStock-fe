@@ -81,7 +81,7 @@ export default function NavBar() {
         </Link>
         <NavLink
           link={`/offer/${userType}/`}
-          name={"받은 오퍼"}
+          name={userType === "student" ? "받은 오퍼" : "보낸 오퍼"}
           style={{ marginLeft: "auto" }}
         />
         <div

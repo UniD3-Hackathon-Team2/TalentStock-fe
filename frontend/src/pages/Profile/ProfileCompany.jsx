@@ -35,17 +35,13 @@ function ProfileCompany() {
   });
 
   const params = useParams();
-  console.log(params);
 
   const handleChange = ({ key, value }) => {
-    console.log(key, value);
     SetDatas((prevCompanyInfo) => {
       const updatedCompanyInfo = { ...prevCompanyInfo, [key]: value };
       return updatedCompanyInfo;
     });
   };
-
-  const [submitInfo, setSubmitInfo] = useState({});
 
   const parame = useParams();
   const id = parame.id;
@@ -96,6 +92,7 @@ function ProfileCompany() {
   return (
     <Layout style={{ rowGap: "2rem" }}>
       <WhiteContainerEdit
+        isSelf={userId.toString() === id}
         overlayChildren={<EditCompanyOne datas={datas} patchData={patchData} />}
       >
         <GridWrapper container>
@@ -165,6 +162,7 @@ function ProfileCompany() {
         )}
       </WhiteContainerEdit>
       <WhiteContainerEdit
+        isSelf={userId.toString() === id}
         overlayChildren={<EditCompanyTwo datas={datas} patchData={patchData} />}
       >
         <GridWrapper container>

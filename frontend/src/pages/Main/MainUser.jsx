@@ -21,14 +21,18 @@ function MainUser({ recommendedStudent }) {
       onClick={(event) => {
         if (event.target.className === "suggestions") return;
         console.log(recommendedStudent.memberId);
-        navigate(`/profile/${recommendedStudent.memberId}`);
+        navigate(`/profile-student/${recommendedStudent.memberId}`);
       }}
-      style={{ display: "flex" }}
+      style={{ display: "flex", cursor: "pointer" }}
     >
       <AccountCircleIcon className="peson" sx={{ fontSize: "9rem" }} />
       <div
         className="infoDiv"
-        style={{ display: "flex", flexDirection: "column", rowGap: "0.2rem" }}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          rowGap: "0.2rem",
+        }}
       >
         <div className="firstLine">
           <span className="name">{recommendedStudent.name}</span>
