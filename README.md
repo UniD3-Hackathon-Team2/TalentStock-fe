@@ -36,7 +36,7 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 |Teammates|University|github|Part|
 |------|---|---|---|
 |Jisoo Oh|SMWU|[hyunseo-k](http://github.com/hyunseo-k)|Backend
-|Sangje Jung|CAU|[hyunseo-k](http://github.com/hyunseo-k)|Backend
+|Sangje Jeong|CAU|[sanggae4133](https://github.com/sanggae4133)|Backend
 |Minkyu Kang|CAU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
 |Hyunseo Kang|SKKU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
 |Yushick Moon|SKKU|[hyunseo-k](http://github.com/hyunseo-k)|Frontend
