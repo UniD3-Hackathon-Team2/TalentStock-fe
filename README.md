@@ -16,6 +16,8 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 
 개인투자자 또한 투자 목적으로 대학생에게 학자금을 제공할 수 있습니다.
 
+React 싱글 페이지 기반으로 개발되었으며, 8개의 API를 통해 DB와 상호작용합니다.
+
 ## Scenario Video
 <https://youtu.be/PmSOQjrp4ZA/>
 
