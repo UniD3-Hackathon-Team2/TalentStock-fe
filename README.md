@@ -1,5 +1,5 @@
 # Talent Save
-
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/df117dd7-f4ae-4fa6-b940-06b7a7b6b126" width="500" />
 <br />
 <br />
 
