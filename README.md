@@ -19,6 +19,17 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 ## Scenario Video
 <https://youtu.be/PmSOQjrp4ZA/>
 
+## Stack
+<div align=left> 
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
+<br/>
+
+## API 목록
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/67aa1cbd-aea9-401c-ac8c-fe6a20da88c3" width="600" />
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/080ed3d8-b21e-4a68-9f7b-757cf897b019" width="600" />
+
 ## Screenshots
 #### 로그인 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/8dd324db-539c-40f3-a74e-e6e87a85ff56" width="800" />
@@ -41,13 +52,6 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 #### Architecture
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/30757fc7-54c5-443c-81b2-bf4b62a65aef" width="800" />
 
-
-## Stack
-<div align=left> 
-<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
-<img src="https://img.shields.io/badge/spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> 
-<br/>
 
 ## Team
 
