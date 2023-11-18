@@ -1,7 +1,7 @@
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/df117dd7-f4ae-4fa6-b940-06b7a7b6b126" width="400" />
+<br />
+<br />
 # Talent Save
-<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/df117dd7-f4ae-4fa6-b940-06b7a7b6b126" width="500" />
-<br />
-<br />
 
 장학금이 필요한 대학생들을 위한, 더 나아가 우리 사회의 미래를 위한 서비스 ‘Talent Save’입니다.
 
