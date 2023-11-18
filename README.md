@@ -19,20 +19,27 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 <https://youtu.be/PmSOQjrp4ZA/>
 
 ## Screenshots
-- 로그인 페이지
+#### 로그인 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/8dd324db-539c-40f3-a74e-e6e87a85ff56" width="800" />
 
-- 회사 상세 페이지
+#### 홈페이지
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/1b30b64c-a48c-41c4-84a2-4ed0c53dccb3" width="800" />
+
+#### 학생 상세 페이지
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/f3950a6a-e6bb-486a-ae88-422309f03213" width="800" />
+
+#### 회사 상세 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/0e4587c5-7dce-447c-89c6-690865e14f32" width="800" />
 
-- 공고 상세 페이지
+#### 공고 상세 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/90d2d29f-ddbf-423c-9800-dcef5f3fa2ef" width="800"/>
 
-## Architecture
+#### 오퍼 페이지
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/2559e829-2ec0-4c02-a74a-1842a1ac41ff" width="800" />
+
+#### Architecture
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/30757fc7-54c5-443c-81b2-bf4b62a65aef" width="800" />
 
-![Screenshot 2023-11-12 at 3 40 15 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/0e4587c5-7dce-447c-89c6-690865e14f32)
-![Screenshot 2023-11-12 at 3 40 00 AM](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/90d2d29f-ddbf-423c-9800-dcef5f3fa2ef)
 
 ## Stack
 <div align=left> 
@@ -43,7 +50,7 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 
 ## Team
 
-|Teammates|University|github|Part|
+|Teammates|University|Part|
 |------|---|---|
 |강민규|CAU|Frontend
 |강현서|SKKU|Frontend
