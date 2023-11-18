@@ -1,5 +1,4 @@
-![image](https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/01823e69-0744-4dc8-a7e0-0e08091c0e91)# TalentSave
-<img src="https://github.com/hyunseo-k/Algorithm/assets/79782180/fd14a3ac-0372-45f3-a139-96adb552c511" width="400" />
+# Talent Save
 
 <br />
 <br />
@@ -21,9 +20,11 @@ Talent Save 서비스의 회원은 크게 대학생, 기업, 개인 투자자 �
 
 ## Screenshots
 - 로그인 페이지
-<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/8dd324db-539c-40f3-a74e-e6e87a85ff56" width="600" />
+<img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/8dd324db-539c-40f3-a74e-e6e87a85ff56" width="800" />
+
 - 회사 상세 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/0e4587c5-7dce-447c-89c6-690865e14f32" width="800" />
+
 - 공고 상세 페이지
 <img src="https://github.com/UniD3-Hackathon-Team2/TalentStock-fe/assets/79782180/90d2d29f-ddbf-423c-9800-dcef5f3fa2ef" width="800"/>
 
